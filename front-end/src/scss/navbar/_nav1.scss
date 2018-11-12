@@ -1,0 +1,44 @@
+//main: ../index.scss
+
+.navigation {
+  width: 100vw;
+  height: 70px;
+  background-color: white;
+  position: fixed;
+  z-index: 999999;
+  padding: 10px;
+}
+
+.mobile-nav {
+  height: calc(100vh - 70px);
+  position: fixed;
+  background-color: white;
+  top: 70px;
+  z-index: 999999;
+  border-top: 1px solid #ebebeb;
+  &.true {
+    right: 0;
+    transition: 200ms;
+  }
+  &.false {
+    right: -290px;
+    transition: 200ms;
+  }
+
+  a {
+    color: #2b2b2b;
+  }
+
+  .activeLink {
+    .link-container {
+      background-color: $color-secondary;
+      color: white;
+    }
+  }
+
+  .link-container {
+    min-width: 280px;
+    padding: 20px;
+    border-bottom: 1px solid #ebebeb;
+  }
+}

@@ -1,0 +1,39 @@
+@import "utils/mixins";
+@import "utils/media-querys";
+@import "utils/variables";
+
+@import "base/base";
+@import "base/normalize";
+@import "base/typography";
+@import "base/colors";
+
+@import "layout/flexbox";
+@import "layout/grid";
+@import "layout/basic-layouts";
+
+@import "singleStyles/shadows";
+@import "singleStyles/scrollable";
+
+@import "components/list";
+@import "components/btn";
+@import "components/card";
+@import "components/form";
+// @import "components/nav";
+
+@import "exo/exo";
+
+@import "navbar/nav1";
+
+@import "animations/index";
+@import "animations/keyframes";
+
+
+@import "../components/reusable/einsätze/card";
+@import "../components/reusable/news/card";
+@import "../components/reusable/termine/card";
+
+.head_image {
+  width: 100%;
+  min-height: 30vh;
+  background-color: #2b2b2b;
+}

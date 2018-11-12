@@ -1,0 +1,15 @@
+// main: ../../../scss/index.scss
+
+.termin-card {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  .row {
+    .column {
+      .placeholder_img {
+        height: 100px;
+        background-color: #2b2b2b;
+      }
+    }
+  }
+}
