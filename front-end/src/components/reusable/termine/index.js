@@ -7,16 +7,16 @@ export default class Termine extends Component {
     return (
       <div className="">
         <div className="row">
-          <div className="column col-s-12">
+          <div className="column col-s-12 col-md-6">
             <Card />
           </div>
-          <div className="column col-s-12">
+          <div className="column col-s-12 col-md-6">
             <Card />
           </div>
-          <div className="column col-s-12">
+          <div className="column col-s-12 col-md-6">
             <Card />
           </div>
-          <div className="column col-s-12">
+          <div className="column col-s-12 col-md-6">
             <Card />
           </div>
         </div>

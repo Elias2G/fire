@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
 
-import dataReducer from './data-reducer';
 import einsatzReducer from './einsatz-reducer';
 import mannschaftReducer from './mannschaft-reducer';
-import teamReducer from './finished-reducer';
+import statisticReducer from './statistic-reducer';
+import terminReducer from './termin-reducer';
 
 const rootReducer = combineReducers({
-  data: dataReducer,
-  einsatz: einsatzReducer,
+  einsätze: einsatzReducer,
   mannschaft: mannschaftReducer,
-  team: teamReducer,
+  statistic: statisticReducer,
+  termine: terminReducer
 });
 
 export default rootReducer;

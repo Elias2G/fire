@@ -1,4 +1,4 @@
-import { FETCH_EINSAETZE } from '../actions/type';
+import { FETCH_TERMINE } from '../actions/type';
 
 import { determine } from '../actions';
 
@@ -12,14 +12,16 @@ const initState = [
 
 export default function(state = initState, action) {
   switch(action.type) {
-    case FETCH_EINSAETZE:
+    case FETCH_TERMINE:
     const dataArray = []
       action.data.map((data, i) => {
-        var { Brandeinsatz, Techn_Einsatz, Techn_Hilfe } = data;
-        if( Brandeinsatz.data[0] === 1 || Techn_Einsatz.data[0] === 1 || Techn_Hilfe.data[0] === 1) {
+        var { Monatsübung, Übung_Sonstige, Festbesuch } = data;
+        console.log(data);
+        if( Monatsübung.data[0] === 1 || Übung_Sonstige.data[0] === 1 || Festbesuch.data[0] === 1) {
           dataArray.push(data)
         }
       })
+      console.log(dataArray);
       return {array: dataArray};
     default:
       return state;

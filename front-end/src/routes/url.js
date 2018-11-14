@@ -1,2 +1,2 @@
-export const url = ['/', '/mannschaft', '/einsätze', '/aktuelles', '/einsatzgebiet'];
-export const urlName = ['Home', 'Mannschaft', 'Einsätze', 'Aktuelles', 'Einsatzgebiet'];
+export const url = ['/', '/mannschaft', '/einsätze', '/statistic', '/einsatzgebiet', '/termine'];
+export const urlName = ['Home', 'Mannschaft', 'Einsätze', 'Statistik', 'Einsatzgebiet', 'Termine'];

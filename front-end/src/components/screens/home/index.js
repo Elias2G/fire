@@ -11,19 +11,16 @@ export default class Home extends Component {
         <img className="head_image coantainer-big" />
 
         <div className="container-big">
-          <h1>Letzte Einsätze</h1>
-        </div>
+        <h1 className="container-big">Letzte Einsätze</h1>
         <Einsätze />
 
-        <div className="container-big">
-          <h1>Neuigkeiten</h1>
-        </div>
+        <h1 className="container-big">Neuigkeiten</h1>
         <News />
 
-        <div className="container-big">
-          <h1>Termine</h1>
-        </div>
+        <h1 className="container-big">Termine</h1>
         <Termine />
+
+        </div>
       </div>
     );
   }

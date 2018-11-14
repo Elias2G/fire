@@ -31,7 +31,6 @@ export default class MannschaftContainer extends Component {
           team.push(data.Bezeichnung)
           obj[pos] = {id: data.id, Name: `${data.Vorname} ${data.Zuname}`, Dienstgrad: data.Kürzel, Bezeichnung: team};
         }
-        console.log(obj);
       })
 
     return { obj, numbers };
@@ -39,10 +38,8 @@ export default class MannschaftContainer extends Component {
 
   render() {
     const data = this.props.data;
-    console.log(data);
-
     var { obj, numbers } = this.loop(data);
-    console.log(obj);
+
     return (
       <div>
         <MannschaftCard data={obj} length={numbers}/>

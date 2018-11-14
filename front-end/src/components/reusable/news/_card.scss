@@ -33,3 +33,24 @@ h3 {
     color: white;
   }
 }
+
+.big-news {
+  @include respond-to($large) {
+    .placeholder_img {
+      min-height: 448px;
+    }
+  }
+}
+.small-news {
+  @include respond-to($large) {
+    .placeholder_img {
+      max-height: 80px;
+    }
+    h3 {
+      font-size: 1.2rem;
+    }
+    h5 {
+      font-size: 1rem;
+    }
+  }
+}

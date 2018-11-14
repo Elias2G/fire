@@ -28,21 +28,21 @@ class Einsätze extends Component {
     return (
       <div className="einsatz-container">
         <div className="row">
-          <div className="column col-s-12">
+          <div className="column col-s-12 col-md-6 col-lg-4">
             <Card
               title="Title"
               subtitle="subtitle"
               data={this.state.data}
             />
           </div>
-          <div className="column col-s-12">
+          <div className="column col-s-12 col-md-6 col-lg-4">
             <Card
               title="Title"
               subtitle="subtitle"
               data={this.state.data}
             />
           </div>
-          <div className="column col-s-12">
+          <div className="column col-s-12 col-md-6 col-lg-4">
             <Card
               title="Title"
               subtitle="subtitle"
