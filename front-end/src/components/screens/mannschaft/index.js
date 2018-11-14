@@ -10,7 +10,7 @@ import MannschaftContainer from './cardLoop';
 
 class Mannschaft extends Component {
   componentDidMount() {
-    this.props.fetch('fetch_mannschaft', `${getMannschaft}`);
+    this.props.fetch('fetch_mannschaft', `${ROOT_URL}${getMannschaft}`);
   }
 
   render() {

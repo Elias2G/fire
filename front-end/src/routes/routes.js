@@ -8,7 +8,7 @@ const Mannschaft = lazy(() => import('../components/screens/mannschaft'));
 const Einsätze = lazy(() => import('../components/screens/einsätze'));
 const Statistic = lazy(() => import('../components/screens/statistic'));
 const Termine = lazy(() => import('../components/screens/termine'));
-
+const Notruf = lazy(() => import('../components/screens/notruf'));
 
 
 export const Main = () => (
@@ -20,6 +20,7 @@ export const Main = () => (
         <Route exact path={url[2]} component={props => <Einsätze {...props} />} />
         <Route exact path={url[3]} component={props => <Statistic {...props} />} />
         <Route exact path={url[5]} component={props => <Termine {...props} />} />
+        <Route exact path={'/notruf'} component={props => <Notruf {...props} />} />
       </Switch>
     </Suspense>
 
