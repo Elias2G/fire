@@ -13,16 +13,21 @@ var pool = mysql.createPool({
 
 const get = "/api/get/";
 
-var all = "select * from tabelle1";
-var einsätze = "SELECT anwesenheit.Lfd_Nr AS id, anwesenheit.Datum, Brandeinsatz, `Techn Einsatz` AS Techn_Einsatz, `Techn Hilfeleistung` AS Techn_Hilfe, Beginn, Ende, Dauer, Ausrückungsgrund, Einsatzort  FROM ( anwesenheit INNER JOIN `name für anwesenheit` ON anwesenheit.`Lfd_Nr` = `name für anwesenheit`.`Einsatz-Nr` ) GROUP BY anwesenheit.`Lfd_Nr` ORDER BY anwesenheit.Datum";
-var einsätzePersonen = "SELECT anwesenheit.Lfd_Nr AS id, `name für anwesenheit`.`Paß-Nr` FROM ( anwesenheit INNER JOIN `name für anwesenheit` ON anwesenheit.`Lfd_Nr` = `name für anwesenheit`.`Einsatz-Nr` ) ";
+var termine = "SELECT * from termine_online";
+var news = "SELECT * from news_online";
+
+var einsätze = "SELECT anwesenheit.Datum, anwesenheit.Brandeinsatz, anwesenheit.Techn_Einsatz, anwesenheit.Techn_Hilfeleistung, anwesenheit.Beginn, anwesenheit.Dauer, anwesenheit.Ausrueckungsgrund, anwesenheit.Einsatzort, anwesenheit.`TLFA2000`, anwesenheit.`SLF`, anwesenheit.`MTF`, Sum(`Anwesend`+`Bereitschaft`)*(1) AS Anzahl FROM anwesenheit INNER JOIN `name für anwesenheit` ON anwesenheit.`Lfd_Nr` = `name für anwesenheit`.`Einsatz-Nr` GROUP BY anwesenheit.Datum, anwesenheit.Brandeinsatz, anwesenheit.Techn_Einsatz, anwesenheit.Techn_Hilfeleistung, anwesenheit.Beginn, anwesenheit.Dauer, anwesenheit.Ausrueckungsgrund, anwesenheit.Einsatzort, anwesenheit.TLFA2000, anwesenheit.SLF, anwesenheit.MTF, anwesenheit.Lfd_Nr HAVING (anwesenheit.Brandeinsatz = true) OR ( anwesenheit.Techn_Einsatz = True) OR (anwesenheit.Techn_Hilfeleistung = True)";
+
 var mannschaft = "SELECT tabelle1.`Paß-Nr` AS id, tabelle1.Vorname, tabelle1.Zuname, funktion.Kürzel AS funktion, dienstgrad.Kürzel, funktionskürzel.Bezeichnung FROM (((tabelle1 INNER JOIN funktion ON tabelle1.`Paß-Nr` = funktion.`Paß-Nr`) INNER JOIN dienstgrad ON tabelle1.`Paß-Nr` = dienstgrad.`Paß-Nr`) INNER JOIN funktionskürzel ON funktion.Kürzel = funktionskürzel.Kürzel) GROUP BY tabelle1.`Paß-Nr`, tabelle1.Vorname, funktion.Kürzel, funktionskürzel.Bezeichnung ORDER BY tabelle1.`Paß-Nr`";
-var termine = "SELECT anwesenheit.Lfd_Nr AS id, anwesenheit.Datum, Monatsübung, `Übung-Sonstige` AS Übung_Sonstige, Festbesuch, Beginn, Ende, Dauer, Ausrückungsgrund, Einsatzort  FROM ( anwesenheit INNER JOIN `name für anwesenheit` ON anwesenheit.`Lfd_Nr` = `name für anwesenheit`.`Einsatz-Nr` ) GROUP BY anwesenheit.`Lfd_Nr` ORDER BY anwesenheit.Datum";
-// var Mannschaft = "select `aktueller Dienstgrad.Kürzel`, tabelle1.Zuname, tabelle1.Vorname, tabelle1.Status, funktion.Datum, funktionskürzel.Bezeichnung, funktion.Datum_anfang, DateDiff('yyyy',[Datum_anfang],Date()) AS Dauer
-// FROM funktionskürzel INNER JOIN (funktion INNER JOIN (funktion INNER JOIN (tabelle1 INNER JOIN [aktueller Dienstgrad] ON tabelle1.[Paß-Nr] = [aktueller Dienstgrad].[Paß-Nr]) ON funktion.[Paß-Nr] = tabelle1.[Paß-Nr]) ON funktion.[Paß-Nr] = tabelle1.[Paß-Nr]) ON funktionskürzel.Kürzel = funktion.Kürzel
-// GROUP BY [aktueller Dienstgrad].Kürzel, tabelle1.Zuname, tabelle1.Vorname, tabelle1.Status, funktion.Datum, funktionskürzel.Bezeichnung, funktion.Datum_anfang, DateDiff('yyyy',[Datum_anfang],Date()), funktion.Art, funktion.Kürzel
-// HAVING (((funktion.Art)='erstfunktion FW') AND ((Count(funktion.Datum_ende))=0))
-// ORDER BY tabelle1.Status";
+
+
+
+// SELECT ANWESENHEIT.Datum, ANWESENHEIT.Brandeinsatz, ANWESENHEIT.[Techn Einsatz], ANWESENHEIT.[Techn Hilfeleistung], ANWESENHEIT.Aktuell, ANWESENHEIT.Beginn, ANWESENHEIT.Dauer, ANWESENHEIT.Ausrueckungsgrund, ANWESENHEIT.Einsatzort, ANWESENHEIT.[1 = TLFA 2000], ANWESENHEIT.[2 = LF], ANWESENHEIT.[3 = MTF], Sum([Anwesend]+[Bereitschaft])*(-1) AS Anzahl
+// FROM ANWESENHEIT INNER JOIN [NAME FÜR ANWESENHEIT] ON ANWESENHEIT.Lfd_Nr = [NAME FÜR ANWESENHEIT].[Einsatz-Nr]
+// GROUP BY ANWESENHEIT.Datum, ANWESENHEIT.Brandeinsatz, ANWESENHEIT.[Techn Einsatz], ANWESENHEIT.[Techn Hilfeleistung], ANWESENHEIT.Aktuell, ANWESENHEIT.Beginn, ANWESENHEIT.Dauer, ANWESENHEIT.Ausrueckungsgrund, ANWESENHEIT.Einsatzort, ANWESENHEIT.[1 = TLFA 2000], ANWESENHEIT.[2 = LF], ANWESENHEIT.[3 = MTF], ANWESENHEIT.Online, ANWESENHEIT.Lfd_Nr
+// HAVING (((ANWESENHEIT.Brandeinsatz)=True) AND ((ANWESENHEIT.Online)=True)) OR (((ANWESENHEIT.[Techn Einsatz])=True) AND ((ANWESENHEIT.Online)=True)) OR (((ANWESENHEIT.[Techn Hilfeleistung])=True) AND ((ANWESENHEIT.Online)=True)) OR (((ANWESENHEIT.Aktuell)=True) AND ((ANWESENHEIT.Online)=True));
+
+
 
 
 const handle_database =  query => (req, res) => {
@@ -58,11 +63,10 @@ const getApiCall = (api, query) => {
   app.get(api, handle_database(query));
 }
 
-getApiCall(get + "all", all);
 getApiCall(get + "einsaetze", einsätze);
-getApiCall(get + "einsaetzePersonen", einsätzePersonen);
 getApiCall(get + "mannschaft", mannschaft);
 getApiCall(get + "termine", termine);
+getApiCall(get + "news", news);
 
 
 

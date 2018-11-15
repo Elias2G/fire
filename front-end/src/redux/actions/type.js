@@ -1,4 +1,5 @@
 export const FETCH_EINSAETZE = 'fetch_einsaetze';
+export const FETCH_EINSAETZE_PERSONEN = 'fetch_einsaetzePersonen';
 export const FETCH_MANNSCHAFT = 'fetch_mannschaft';
 export const FETCH_TERMINE = 'fetch_termine';
 

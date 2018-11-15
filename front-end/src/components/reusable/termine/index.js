@@ -20,7 +20,6 @@ export default class Termine extends Component {
             <Card />
           </div>
         </div>
-
       </div>
     );
   }

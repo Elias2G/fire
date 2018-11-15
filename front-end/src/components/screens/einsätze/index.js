@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { fetch, determine } from '../../../redux/actions';
-
 import { ROOT_URL, getEinsatz } from '../../../config';
+
+import EinsatzContainer from './einsatz-container';
 
 
 class Einsätze extends Component {
@@ -18,9 +19,10 @@ class Einsätze extends Component {
         <img className="head_image coantainer-big" />
 
         <div className="container-big">
-          <h1>Einsätze</h1>
-        </div>
+          <h1 className="col-s-12">Einsätze</h1>
 
+          <EinsatzContainer />
+        </div>
       </div>
     );
   }
