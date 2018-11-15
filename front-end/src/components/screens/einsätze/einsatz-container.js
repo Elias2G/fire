@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetch } from '../../../redux/actions';
 import { ROOT_URL, getEinsatzPersonen } from '../../../config';
 
-import { Card } from './card';
+import Card from './card';
 
 class EinsatzContainer extends Component {
   state = {
@@ -46,7 +46,7 @@ class EinsatzContainer extends Component {
             console.log(pos);
             return (
               <>
-                <h1 className="col-s-12">{objMonth}</h1>
+                <h4 className="col-s-12 red-title-bg shadow">{objMonth}</h4>
                 <Card data={data} />
               </>
             )
@@ -54,7 +54,7 @@ class EinsatzContainer extends Component {
             ++pos
             return (
               <>
-                <h1 className="col-s-12">{objMonth}</h1>
+                <h4 className="col-s-12 red-title-bg shadow">{objMonth}</h4>
                 <Card data={data} />
               </>
             )

@@ -42,3 +42,64 @@
     border-bottom: 1px solid #ebebeb;
   }
 }
+
+.desktop-alignement {
+  float: left;
+  width: auto;
+  min-width: 100px;
+}
+
+.desktop-container-site {
+  width: 300px;
+}
+.desktop-container-links {
+  width: 100%;
+  right: 0;
+  position: relative;
+}
+
+.dropCon {
+  height: 40px;
+  width: auto;
+  overflow: hidden;
+  transition: 300ms;
+  .nav-link-dropdownContainer {
+    width: auto;
+    display: block;
+    background-color: white;
+    padding: 20px;
+    margin-top: 15px;
+    height: auto;
+    transition: 300ms;
+  }
+  &:hover {
+    height: auto;
+    transition: 300ms;
+    height: auto;
+    .nav-link-dropdownContainer {
+      width: auto;
+      display: block;
+      background-color: white;
+      padding: 20px;
+      margin-top: 15px;
+      height: auto;
+      transition: 300ms;
+    }
+  }
+}
+
+.activeLink p {
+  border-bottom: 6px solid $color-secondary !important;
+  color: black;
+  font-size: 0.9rem;
+}
+.notActive p {
+  border-bottom: 6px solid $color-primary-light;
+  color: black;
+  font-size: 0.9rem;
+  transition: 200ms;
+  &:hover {
+    color: $color-secondary;
+    transition: 200ms;
+  }
+}
