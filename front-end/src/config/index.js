@@ -1,4 +1,4 @@
-export const ROOT_URL = 'http://localhost:8080';
+export const ROOT_URL = 'https://77ad0cfe.ngrok.io';
 
 export const getAll = '/api/get/all';
 export const getEinsatz = '/api/get/einsaetze';
