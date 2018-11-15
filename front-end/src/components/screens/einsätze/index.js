@@ -9,7 +9,7 @@ import EinsatzContainer from './einsatz-container';
 
 class Einsätze extends Component {
   componentDidMount() {
-    this.props.fetch('fetch_einsaetze', `${getEinsatz}`);
+    this.props.fetch('fetch_einsaetze', `${ROOT_URL}${getEinsatz}`);
   }
 
   render() {
