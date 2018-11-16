@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Slider from 'react-slick';
 
 import { NavLink } from 'react-router-dom';
 
 export default class Card extends Component {
   state = {
-    open: 'e-open',
+    open: 'e-closed',
   }
 
   handleClick = () => {
@@ -21,7 +22,7 @@ export default class Card extends Component {
 
         <div className="einsatz-card-title" onClick={this.handleClick}>
           <div className="row nop">
-            <div className="column col-s-12 col-lg-3 nop">
+            <div className="column col-s-6 col-lg-3 nop">
               <h6 className="light">
                 {
                   data.Datum.substring(8,10) + '.' +
@@ -30,17 +31,17 @@ export default class Card extends Component {
                 }
               </h6>
             </div>
-            <div className="column col-s-12 col-lg-3 nop">
+            <div className="column col-s-6 col-lg-3 nop">
               <h6 className="light">
                 {data.Ausrueckungsgrund}
               </h6>
             </div>
-            <div className="column col-s-12 col-lg-3 nop">
+            <div className="column col-s-6 col-lg-3 nop">
               <h6 className="light">
                 {data.Einsatzort}
               </h6>
             </div>
-            <div className="column col-s-12 col-lg-3 nop">
+            <div className="column col-s-6 col-lg-3 nop">
               <div>
                 icon
               </div>
@@ -52,7 +53,7 @@ export default class Card extends Component {
           <div className="row nop">
             <div className="column col-s-12 col-lg-6 nop">
               <h6>Einsatzbericht</h6>
-              <p></p>
+              <p>lorem ipsum dolor sit amet</p>
             </div>
             <div className="column col-s-12 col-lg-6 nop">
               <h6>Einsatzdaten</h6>
@@ -80,7 +81,7 @@ export default class Card extends Component {
 
           <div className="row nop">
             <div className="column col-s-12 nop">
-              hi
+              { data.Bilderverzeichnis !== null ? <EinsatzSlider data={data.Bilderverzeichnis}/> : '' }
             </div>
           </div>
         </div>
@@ -89,4 +90,61 @@ export default class Card extends Component {
 
     );
   }
+}
+
+export const EinsatzSlider = (props) => {
+  var settings = {
+    dots: false,
+    arrows: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    focusOnSelect: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  }
+  var imageArray = props.data.split(';');
+  console.log(imageArray);
+  return (
+    <Slider {...settings} >
+      <div>
+        <img className="placeholder_img" source={imageArray[0]} />
+      </div>
+      <div>
+        <img className="placeholder_img" />
+      </div>
+      <div>
+        <img className="placeholder_img" />
+      </div>
+      <div>
+        <img className="placeholder_img" />
+      </div>
+      <div>
+        <img className="placeholder_img" />
+      </div>
+    </Slider>
+  )
 }

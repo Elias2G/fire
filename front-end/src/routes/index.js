@@ -71,19 +71,19 @@ export class Navigation extends Component {
       return (
         <>
         <div className="navigation shadow">
-          <div className="container-big row nop">
-            <div className="column col-s-2">
+          <div className="container-big row nop nav-fixed-height">
+            <div className="column nop">
               <h5>Actual site</h5>
             </div>
 
-            <div className="column col-s-10">
-              <div classNAme="container-big nop">
+            <div className="column col-s-10 nop">
+              <div className="fix-container-big nop">
 
                 {url.map((key, i) => {
                   if(dropDown[i] === 1) {
                     return (
                       <>
-                        <div className="dropCon desktop-alignement">
+                        <div className="dropCon desktop-alignement inline-block-fix">
                           <NavLink
                             className="align-center nav-link notActive"
                             exact to={key}
@@ -107,7 +107,7 @@ export class Navigation extends Component {
                     )
                   } else {
                     return (
-                      <div>
+                      <div className="inline-block-fix">
                         <NavLink
                           className="align-center nav-link desktop-alignement notActive"
                           exact to={key}

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import ReactDOM, { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 
 import { fetch } from '../../../redux/actions';
 import { ROOT_URL, getEinsatzPersonen } from '../../../config';
 
-import Card from './card';
+import UnderNav from '../../reusable/under-nav';
+import Card from './card'
 
 class EinsatzContainer extends Component {
   state = {
@@ -38,6 +40,7 @@ class EinsatzContainer extends Component {
 
   renderHelper = (array) => {
     const month = [ '13', '12', '11', '10', '09', '08', '07', '06', '05', '04', '03', '02', '01' ];
+    const monthName = ['none', 'Dezember', 'November', 'Oktober', 'September', 'August', 'Juli', 'Juni', 'Mai', 'April', 'März', 'Februar', 'Januar'];
     var pos = 0;
     const arrayMonth = [];
     var sammlung = {};
@@ -54,7 +57,7 @@ class EinsatzContainer extends Component {
             console.log(pos);
             return (
               <>
-                <h4 className="col-s-12 red-title-bg shadow">{objMonth}</h4>
+                <h4 className="col-s-12 red-title-bg shadow">{monthName[pos]}</h4>
                 <Card data={data} />
               </>
             )
@@ -62,7 +65,7 @@ class EinsatzContainer extends Component {
             ++pos
             return (
               <>
-                <h4 className="col-s-12 red-title-bg shadow">{objMonth}</h4>
+                <h4 className="col-s-12 red-title-bg shadow">{monthName[pos]}</h4>
                 <Card data={data} />
               </>
             )
@@ -70,7 +73,12 @@ class EinsatzContainer extends Component {
         }
       })
     )
+  }
 
+  handleClick = (data) => {
+    this.setState({
+      filter: data
+    })
   }
 
   render() {
@@ -83,10 +91,21 @@ class EinsatzContainer extends Component {
     return (
       <div className="row">
         {this.renderHelper(arrayYear)}
+        {this.renderPortal(einsätze, this.handleClick)}
       </div>
     );
   }
+
+  renderPortal = (data, callback) => {
+    return ReactDOM.createPortal(
+      <div className="under-nav shadow">
+        <UnderNav data={data} click={callback}/>
+      </div>,
+      document.getElementById("navPortal")
+    )
+  }
 }
+
 
 const mapStateToProps = (data) => {
   return {
