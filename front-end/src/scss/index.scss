@@ -32,12 +32,34 @@
 @import "../components/reusable/einsätze/card";
 @import "../components/reusable/news/card";
 @import "../components/reusable/termine/card";
+@import "../components/reusable/under-nav/under-nav";
 @import "../components/screens/mannschaft/card";
 @import "../components/screens/termine/card";
 @import "../components/screens/notruf/index";
+@import "../components/screens/einsätze/style";
+
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 .head_image {
   width: 100%;
   min-height: 30vh;
   background-color: #2b2b2b;
+}
+
+p {
+  font-size: 15px;
+  @include respond-to($medium) {
+    font-size: 20px;
+  }
+}
+
+.under-nav {
+  top: 70px;
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  background-color: white;
+  z-index: 999999;
 }
