@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { NavLink } from 'react-router-dom';
+
 export default class Card extends Component {
   state = {
     open: 'e-open',
@@ -68,8 +70,17 @@ export default class Card extends Component {
                 }
               </p>
               <p>Dauer: {data.Dauer} h</p>
+              <p>Ort: {data.Einsatzort}</p>
               <h6>Eigene Einsatzkräfte</h6>
               <p>Mannschaft: { data.Anzahl }</p>
+              <p>Fahrzeuge: </p>
+              { data.TLFA2000.data[0] === 1 ? <NavLink to="/fahrzeuge"><p>TLFA2000</p></NavLink> : ''}
+            </div>
+          </div>
+
+          <div className="row nop">
+            <div className="column col-s-12 nop">
+              hi
             </div>
           </div>
         </div>

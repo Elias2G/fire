@@ -11,19 +11,27 @@ class EinsatzContainer extends Component {
     filter: 2017,
   }
 
+  // filter nach jahr function gibt einen array aus objecten zurück
   filterHelper = (data) => {
+    // leerer array zum zwischenspeichern der daten
     const arrayYear = [];
 
+    // mapt / loopt den array data
     data.map((data) => (
+      //führt für jedes object (data) die filter funktion aus
       this.filter(this.state.filter, data, arrayYear)
     ))
+    // wenn alle einträge gamapt / geloopt wurden gibt die funktion arrayYear zurück zum weiterverwenden
     return { arrayYear };
   }
 
+  // 2 parameter: 1.) date = die state, data = data von der map funktion, arrayYear = leeres array
   filter = (date, data, array) => {
+    // beinhaltet die ersten 4 Chars vom Datum
     var objYear = data.Datum.substring(0,4);
 
     if( objYear == date ) {
+      // fügt das object in einen array ein
       array.push(data);
     }
   }
@@ -66,7 +74,10 @@ class EinsatzContainer extends Component {
   }
 
   render() {
+    // deconstructuring die daten die vom redux store kommen
     const { einsätze } = this.props.data;
+    // eine funktion um nur die einsätze mit dem richtigen Jahr
+    // auszuwählen das in der state steht
     var { arrayYear } = this.filterHelper(einsätze);
 
     return (
