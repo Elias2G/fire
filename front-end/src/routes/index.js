@@ -32,7 +32,7 @@ export class Navigation extends Component {
   }
 
   render() {
-    if(this.state.width < 1024) {
+    if(this.state.width < 8000) {
       return (
         <>
         <div className="navigation shadow">

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 
+import Abzeichen from "./abzeichen";
+
 export default class MannschaftCard extends Component {
   state = {
     numbers: ''
@@ -11,6 +13,7 @@ export default class MannschaftCard extends Component {
       numbers: this.props.length
     })
   }
+
 
   renderHelper = (data, numbers) => {
     console.log(data);
@@ -23,13 +26,12 @@ export default class MannschaftCard extends Component {
     return (
       array.map((data, i) => (
 
-          <div className="column col-s-12 col-ms-6 col-lg-4 team-card shadow index">
-            {data.id}{console.log(data.Bezeichnung, i)}
+          <div className="column col-s-12 col-ms-6 col-lg-3 col-ml-4 team-card shadow index">
             <div className="rounded-container shadow-big">
-              <img className="team-img " />
+              <img className="team-img" src={data.Bildverzeichnis} />
             </div>
             <div className="container">
-              <h4 className="break-all align-center">{data.Name}</h4>
+              <h5 className="break-all align-center">{data.Name}</h5>
               <h6 className="align-center primary-light">
                 {data.Dienstgrad}
               </h6>
@@ -39,8 +41,9 @@ export default class MannschaftCard extends Component {
                 {data.Bezeichnung.map(data => (data + ', '))}
               </p>
             </div>
-
+            <Abzeichen />
           </div>
+
         )
       )
     );
