@@ -15,8 +15,10 @@ class Abzeichen extends Component{
   render () {
     return (
       <div>
-        <div onClick={this.toggleHidden.bind(this)} className="abzeichen align-center light">
-          Abzeichen
+        <div className="align-center">
+          <p className="abzeichenP">
+            <span onClick={this.toggleHidden.bind(this)} className="abzeichen light">Abzeichen</span>
+          </p>
         </div>
         {!this.state.isHidden && <Child />}
       </div>

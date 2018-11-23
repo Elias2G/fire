@@ -40,6 +40,10 @@
 .abzeichen{
   background-color:white;
   cursor:pointer;
+  color:black;
+  &:hover{
+    color: $color-secondary;
+  }
 }
 
 .abzeichenBilder{

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { fetch } from '../../../redux/actions';
 import { ROOT_URL, getTermine } from '../../../config';
 
+import TermineCard from './card';
+
 class Termine extends Component {
   state = {
     reload: false,
@@ -21,7 +23,7 @@ class Termine extends Component {
         <div className="container-big">
           <h1>Termine</h1>
         </div>
-
+          <TermineCard data={this.props.data.termine}/>
       </div>
     );
   }
