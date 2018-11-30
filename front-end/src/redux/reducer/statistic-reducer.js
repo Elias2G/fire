@@ -1,4 +1,4 @@
-import { CREATE_STAT } from '../actions/type';
+import { FETCH_EINSAETZE } from '../actions/type';
 
 const initState = [
   {
@@ -21,8 +21,45 @@ const initState = [
 
 export default function(state = initState, action) {
   switch(action.type) {
-    case CREATE_STAT:
-      return action.data;
+    case FETCH_EINSAETZE:
+
+      var year = [];
+      var pos = 0;
+      var date = new Date().getFullYear();
+
+      for(var i = 2003; i < date; i++) {
+        year.push(i);
+      }
+
+      year.push(date);
+      var brandN = 0;
+      var technN = 0;
+
+      var obj = {};
+      console.log(obj);
+
+      action.data.map((data) => {
+        var brand = data.Brandeinsatz.data[0];
+        var techn = data.Techn_Einsatz.data[0] || data.Techn_Hilfeleistung.data[0];
+
+        console.log(data.Datum.substring(0,4) == year[pos]);
+        if(data.Datum.substring(0,4) == year[pos]) {
+          console.log(year[pos]);
+          if(brand === 1) { brandN++ }
+          if(techn === 1) { technN++ }
+        } else {
+          console.log('hi');
+          obj = { ...obj, [year[pos].toString()]: { 'Brandeinsatz': brandN, 'Techn_Einsatz': technN, 'Gesamt': brandN + technN } }
+          brandN = 0;
+          technN = 0;
+          ++pos
+        }
+      });
+      obj = { ...obj, [year[pos].toString()]: { 'Brandeinsatz': brandN, 'Techn_Einsatz': technN, 'Gesamt': brandN + technN  } }
+
+      return (
+        obj
+      );
     default:
       return state;
   }
