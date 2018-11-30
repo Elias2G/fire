@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { determine, fetch } from '../../../redux/actions';
 import { ROOT_URL, getEinsatz } from '../../../config';
 
+import Charts from './charts';
+
 class Statistic extends Component {
   state = {
     reload: false,
@@ -19,9 +21,8 @@ class Statistic extends Component {
         <img className="head_image coantainer-big" />
 
         <div className="container-big">
-          <h1>Mannschaft</h1>
+          <Charts />
         </div>
-
       </div>
     );
   }

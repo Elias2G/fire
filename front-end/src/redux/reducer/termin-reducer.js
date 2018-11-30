@@ -4,9 +4,8 @@ import { determine } from '../actions';
 
 const initState = [
     {
-      array: {
+        Titel: "Übung",
         Datum: 2008,
-      }
     }
   ]
 

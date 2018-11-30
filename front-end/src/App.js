@@ -10,6 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navigation />
+        <div id="navPortal" className="under"></div>
         <Main />
         <Footer />
       </div>
