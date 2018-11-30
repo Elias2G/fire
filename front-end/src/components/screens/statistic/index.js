@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { determine, fetch } from '../../../redux/actions';
+import { fetch } from '../../../redux/actions';
 import { ROOT_URL, getEinsatz } from '../../../config';
 
 import Charts from './charts';
@@ -11,17 +11,20 @@ class Statistic extends Component {
     reload: false,
   }
   componentDidMount() {
-    this.props.fetch('fetch_einsaetze', `${getEinsatz}`);
-    this.props.determine('create_stat', this.props.data.einsätze)
+    this.props.fetch('fetch_einsaetze', `${ROOT_URL}${getEinsatz}`);
   }
 
   render() {
+    console.log(this.props.data.statistic);
     return (
       <div>
         <img className="head_image coantainer-big" />
 
         <div className="container-big">
-          <Charts />
+          <h1>Unsere Statistik im Überblick</h1>
+        </div>
+        <div className="container-big">
+          <Charts data={this.props.data.statstic}/>
         </div>
       </div>
     );
@@ -36,5 +39,5 @@ const mapStateToProps = (data) => {
 
 export default connect(
   mapStateToProps,
-  { determine, fetch }
+  { fetch }
 )(Statistic)
