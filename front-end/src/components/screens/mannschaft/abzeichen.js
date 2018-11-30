@@ -7,7 +7,7 @@ class Abzeichen extends Component{
       isHidden: true
     }
   }
-  toggleHidden () {
+  toggleHidden = () => {
     this.setState({
       isHidden: !this.state.isHidden
     })
@@ -17,7 +17,7 @@ class Abzeichen extends Component{
       <div>
         <div className="align-center">
           <p className="abzeichenP">
-            <span onClick={this.toggleHidden.bind(this)} className="abzeichen light">Abzeichen</span>
+            <span onClick={this.toggleHidden} className="abzeichen light">Abzeichen</span>
           </p>
         </div>
         {!this.state.isHidden && <Child />}

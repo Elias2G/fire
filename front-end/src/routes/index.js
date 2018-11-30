@@ -32,7 +32,7 @@ export class Navigation extends Component {
   }
 
   render() {
-    if(this.state.width < 8000) {
+    if(this.state.width < 1024) {
       return (
         <>
         <div className="navigation shadow">
@@ -72,11 +72,11 @@ export class Navigation extends Component {
         <>
         <div className="navigation shadow">
           <div className="container-big row nop nav-fixed-height">
-            <div className="column nop">
+            <div className="column nop col-s-2 nop">
               <h5>Actual site</h5>
             </div>
 
-            <div className="column col-s-10 nop">
+            <div className="column col-s-12 nop align-center">
               <div className="fix-container-big nop">
 
                 {url.map((key, i) => {
