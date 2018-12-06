@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Doughnut, Chart} from 'react-chartjs-2';
 
+import _ from 'lodash';
+
 
 var originalDoughnutDraw = Chart.controllers.doughnut.prototype.draw;
 Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
@@ -29,54 +31,35 @@ Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
   }
 });
 
-const data2 = {
-	labels: [
-		'Brand Einsätze',
-		'Technische Einsätze',
-	],
-	datasets: [{
-		data: [100, 78],
-		backgroundColor: [
-		'red',
-		'black'
-		],
-		hoverBackgroundColor: [
-		'red',
-		'black'
-		]
-	}]
-};
-
 class Charts extends Component {
 
-  render() {
+  renderHelper = (data, numbers) => {
+    console.log(data);
+    var num = _.uniq(numbers);
+    var array = []
+    for ( var key in data) {
+      array.push(data[key]);
+    }
+    console.log(data);
     return (
-      <div>
-        <div className="row">
-          <div className="column col-s-12 col-ms-6 col-lg-4 col-ml-4 team-card shadow index">
-            <h2 className="align-center">Einsätze 2018</h2>
-            <Doughnut width={200} height={100} data={data2}/>
-          </div>
-          <div className="column col-s-12 col-ms-6 col-lg-4 col-ml-4 team-card shadow index">
-            <h2 className="align-center">Einsätze 2017</h2>
-            <Doughnut width={200} height={100} data={data2}/>
-          </div>
-          <div className="column col-s-12 col-ms-6 col-lg-4 col-ml-4 team-card shadow index">
-            <h2 className="align-center">Einsätze 2016</h2>
-            <Doughnut width={200} height={100} data={data2}/>
-          </div>
-          <div className="column col-s-12 col-ms-6 col-lg-4 col-ml-4 team-card shadow index">
-            <h2 className="align-center">Einsätze 2015</h2>
-            <Doughnut width={200} height={100} data={data2}/>
-          </div>
-          <div className="column col-s-12 col-ms-6 col-lg-4 col-ml-4 team-card shadow index">
-            <h2 className="align-center">Einsätze 2014</h2>
-            <Doughnut width={200} height={100} data={data2}/>
-          </div>
-          <div className="column col-s-12 col-ms-6 col-lg-4 col-ml-4 team-card shadow index">
-            <h2 className="align-center">Einsätze 2013</h2>
-            <Doughnut width={200} height={100} data={data2}/>
-          </div>
+      array.map((data, i) => (
+
+        <div className="column col-s-12 col-ms-6 col-lg-4 col-ml-4 team-card shadow index">
+          <h2 className="align-center">Einsätze 2018</h2>
+          <Doughnut width={200} height={100} data={data.einsätze}/>
+        </div>
+
+        )
+      )
+    );
+  }
+
+  render() {
+    const { data, length } = this.props;
+    return (
+      <div className="container-big">
+        <div className="row shadow-land">
+          {this.renderHelper(data, length)}
         </div>
       </div>
     );
