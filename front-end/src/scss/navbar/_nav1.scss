@@ -1,122 +1,104 @@
 //main: ../index.scss
 
-.navigation {
+.nav {
   width: 100vw;
-  height: 70px;
-  background-color: white;
-  position: fixed;
-  z-index: 999999;
-  // padding: 10px;
-}
-
-.mobile-nav {
-  height: calc(100vh - 70px);
+  top: 0;
   position: fixed;
   background-color: white;
-  top: 70px;
-  z-index: 999999;
-  border-top: 1px solid #ebebeb;
-  &.true {
-    right: 0;
-    transition: 200ms;
-  }
-  &.false {
-    right: -290px;
-    transition: 200ms;
-  }
+  z-index: 99999999;
 
-  a {
-    color: #2b2b2b;
-  }
+  .mobile {
+    background-color: white;
+    border-bottom: 1px solid $color-primary-light;
 
-  .activeLink {
-    .link-container {
-      background-color: $color-secondary;
-      color: white;
+    .nav-icon {
+      background-color: black;
+      width: 25px;
+      height: 2px;
+      &:before {
+        @extend .nav-icon;
+        content: "";
+        display: block;
+        margin-top: -8px;
+      }
+      &:after {
+        @extend .nav-icon;
+        content: "";
+        display: block;
+        margin-top: 14px;
+      }
     }
   }
 
-  .link-container {
-    min-width: 280px;
-    padding: 20px;
-    border-bottom: 1px solid #ebebeb;
-  }
-}
-
-.desktop-alignement {
-  float: left;
-  width: auto;
-  min-width: 100px;
-}
-
-.desktop-container-site {
-  width: 300px;
-}
-.desktop-container-links {
-  width: 100%;
-  right: 0;
-  position: relative;
-}
-
-.dropCon {
-  height: 40px;
-  width: auto;
-  overflow: hidden;
-  transition: 300ms;
-  .nav-link-dropdownContainer {
-    width: auto;
-    display: block;
+  .nav-menü {
+    position: fixed;
     background-color: white;
-    padding: 20px;
-    margin-top: 15px;
-    height: auto;
-    transition: 300ms;
-  }
-  &:hover {
-    height: auto;
-    transition: 300ms;
-    height: auto;
-    .nav-link-dropdownContainer {
-      width: auto;
-      display: block;
-      background-color: white;
-      padding: 20px;
-      margin-top: 15px;
-      height: auto;
+    z-index:0;
+    height: 100vh;
+    right: 0;
+    &.true {
+      width: 100vw;
       transition: 300ms;
     }
+    &.false {
+      width: 0px;
+      overflow: hidden;
+      transition: 300ms;
+    }
+
+    .nav-item {
+      width: 100%;
+      border-bottom: 1px solid $color-primary-light;
+      padding: 15px;
+    }
+  }
+  p {
+    font-size: 13pt;
+    color: black;
   }
 }
 
-.activeLink p {
-  border-bottom: 6px solid $color-secondary !important;
-  color: black;
-  font-size: 0.9rem;
-  width: 90%;
-}
-.notActive p {
-  border-bottom: 6px solid $color-primary;
-  color: black;
-  font-size: 0.9rem;
-  transition: 200ms;
-  &:hover {
-    color: $color-secondary;
-    transition: 200ms;
+
+
+
+
+// DROPWDOWN STYLES
+
+.dropDown {
+  .this {
+    &-true {
+      pointer-events: all;
+    }
+    &-false {
+      pointer-events: none;
+    }
+  }
+
+  .dropDownContainer {
+    overflow: hidden;
+    &.true {
+      height: 100%;
+      transition: 300ms;
+      opacity: 1;
+    }
+    &.false {
+      height: 0px;
+      transition: 300ms;
+      opacity: 0;
+    }
+  }
+
+  .dropContent {
+    padding-top: 15px;
+
+    .dropItem {
+      padding-left: 15px;
+    }
   }
 }
 
-.nav-fixed-height {
-  height: 100%;
-}
-.fix-column-pad {
-  padding-bottom: 0px;
-}
-.fix-container-big {
-  bottom: 0;
-  height: auto;
-  margin-top: auto;
-}
-.inline-block-fix {
-  height: 100%;
-  display: inline-block;
+.activeLink {
+  p {
+    color: $color-secondary !important;
+  }
 }

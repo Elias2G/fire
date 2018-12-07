@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 
 import { NavLink } from 'react-router-dom';
-import { url, urlName, dropDown } from './url';
+import { url, urlName } from './url';
+
+import DropDown from './dropDown.js';
 
 export class Navigation extends Component {
   state = {
     width: window.outerWidth,
+    open: false,
   }
   componentDidMount() {
     this.size();
     window.addEventListener("resize", this.size);
-  }
-  constructor(props) {
-    super(props);
-    this.state = {open: false};
   }
 
   handleClick = () => {
@@ -32,104 +31,59 @@ export class Navigation extends Component {
   }
 
   render() {
+    return(
+      <div className="nav">
+        {this.renderHelper()}
+      </div>
+    )
+  }
+
+  renderHelper = () => {
     if(this.state.width < 1024) {
-      return (
+      return(
         <>
-        <div className="navigation shadow">
-          <div className="row">
-            <div className="column col-s-8">
-              <h5>Actual site</h5>
-            </div>
-            <div className="column col-s-4">
-              <div className="icon" onClick={this.handleClick}>
-                <p className="align-right">icon</p>
-              </div>
-            </div>
+        <div className="mobile row">
+          <div className="column col-s-10"><h2>LOGO</h2></div>
+          <div
+            className="column col-s-2 flex-algin-center justify-center nop"
+            onClick={this.handleClick}
+          >
+            <div className="nav-icon"></div>
           </div>
         </div>
-
-        <div className={"mobile-nav shadow " + this.state.open}>
-          {url.map((key, i) => {
-            return (
-              <NavLink
-                className="align-center nav-link"
-                exact to={key}
-                onClick={this.handleClick}
-                activeClassName="activeLink"
-              >
-                <div className="link-container">
-                  <p>{urlName[i]}</p>
-                </div>
-              </NavLink>
-            );
-          })}
-
+        <div className={"nav-menü " + this.state.open}>
+          <div className="nav-item">
+            <NavLink exact to='/' onClick={this.handleClick} activeClassName="activeLink">
+              <p>Home</p>
+            </NavLink>
+          </div>
+          <div className="nav-item">
+            <NavLink exact to='/mannschaft' onClick={this.handleClick} activeClassName="activeLink">
+              <p>Mannschaft</p>
+            </NavLink>
+          </div>
+          <div className="nav-item">
+            <DropDown
+              data={["Einsätze", "Statistik"]}
+              goTo={["/einsätze", "/statistic"]}
+              function={this.handleClick}
+            />
+          </div>
+          <div className="nav-item">
+            <NavLink exact to='/termine' onClick={this.handleClick} activeClassName="activeLink">
+              <p>Termine</p>
+            </NavLink>
+          </div>
         </div>
         </>
-      );
+
+      )
     } else {
-      return (
-        <>
-        <div className="navigation shadow">
-          <div className="container-big row nop nav-fixed-height">
-            <div className="column nop col-s-2 nop">
-              <h5>Actual site</h5>
-            </div>
+      return(
+        <div>
 
-            <div className="column col-s-12 nop align-center">
-              <div className="fix-container-big nop">
-
-                {url.map((key, i) => {
-                  if(dropDown[i] === 1) {
-                    return (
-                      <>
-                        <div className="dropCon desktop-alignement inline-block-fix">
-                          <NavLink
-                            className="align-center nav-link notActive"
-                            exact to={key}
-                            onClick={this.handleClick}
-                            activeClassName="activeLink"
-                          >
-                            <p>{urlName[i]}</p>
-                          </NavLink>
-                          <div className="nav-link-dropdownContainer shadow">
-                          <NavLink
-                            className="align-center nav-link notActive"
-                            exact to={key}
-                            onClick={this.handleClick}
-                            activeClassName="activeLink"
-                          >
-                            <p className="pad">{urlName[i]}</p>
-                          </NavLink>
-                        </div>
-                      </div>
-                      </>
-                    )
-                  } else {
-                    return (
-                      <div className="inline-block-fix">
-                        <NavLink
-                          className="align-center nav-link desktop-alignement notActive"
-                          exact to={key}
-                          onClick={this.handleClick}
-                          activeClassName="activeLink"
-                        >
-                          <p>{urlName[i]}</p>
-                        </NavLink>
-                      </div>
-                    );
-                  }
-
-                })}
-
-              </div>
-            </div>
-
-          </div>
         </div>
-        </>
       )
     }
-
   }
 }
