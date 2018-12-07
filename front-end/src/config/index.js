@@ -1,4 +1,4 @@
-export const ROOT_URL = 'https://cad75fc0.ngrok.io';
+export const ROOT_URL = 'http://localhost:3000';
 
 export const getAll = '/api/get/all';
 export const getEinsatz = '/api/get/einsaetze';
