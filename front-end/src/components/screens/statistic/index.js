@@ -24,7 +24,7 @@ class Statistic extends Component {
           <h1>Unsere Statistik im Überblick</h1>
         </div>
         <div className="container-big">
-          <Charts data={this.props.data.statstic}/>
+          <Charts data={this.props.data.statistic}/>
         </div>
       </div>
     );
