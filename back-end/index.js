@@ -18,16 +18,11 @@ var news = "SELECT * from news_online";
 
 var einsätze = "SELECT anwesenheit.Bilderverzeichnis, anwesenheit.Datum, anwesenheit.Brandeinsatz, anwesenheit.Techn_Einsatz, anwesenheit.Techn_Hilfeleistung, anwesenheit.Beginn, anwesenheit.Dauer, anwesenheit.Ausrueckungsgrund, anwesenheit.Einsatzort, anwesenheit.`TLFA2000`, anwesenheit.`SLF`, anwesenheit.`MTF`, Sum(`Anwesend`+`Bereitschaft`)*(1) AS Anzahl FROM anwesenheit INNER JOIN `name für anwesenheit` ON anwesenheit.`Lfd_Nr` = `name für anwesenheit`.`Einsatz-Nr` GROUP BY anwesenheit.Datum, anwesenheit.Brandeinsatz, anwesenheit.Techn_Einsatz, anwesenheit.Techn_Hilfeleistung, anwesenheit.Beginn, anwesenheit.Dauer, anwesenheit.Ausrueckungsgrund, anwesenheit.Einsatzort, anwesenheit.TLFA2000, anwesenheit.SLF, anwesenheit.MTF, anwesenheit.Lfd_Nr HAVING (anwesenheit.Brandeinsatz = true) OR ( anwesenheit.Techn_Einsatz = True) OR (anwesenheit.Techn_Hilfeleistung = True)";
 
-var mannschaft = "SELECT mannschaft.`Paß-Nr` AS id, mannschaft.Vorname, mannschaft.Zuname, funktion.Kürzel AS funktion, dienstgrad.Kürzel, funktionskürzel.Bezeichnung FROM (((mannschaft INNER JOIN funktion ON mannschaft.`Paß-Nr` = funktion.`Paß-Nr`) INNER JOIN dienstgrad ON mannschaft.`Paß-Nr` = dienstgrad.`Paß-Nr`) INNER JOIN funktionskürzel ON funktion.Kürzel = funktionskürzel.Kürzel) GROUP BY mannschaft.`Paß-Nr`, mannschaft.Vorname, funktion.Kürzel, funktionskürzel.Bezeichnung ORDER BY mannschaft.`Paß-Nr`";
+var mannschaft = "SELECT aktueller_Dienstgrad.Kürzel, mannschaft.Zuname, mannschaft.Vorname, mannschaft.Status, eintritt.Datum, funktionskürzel.Bezeichnung, funktion.Datum_anfang, DATEDIFF(funktion.Datum_anfang, NOW()) AS Dauer, mannschaft.Bilderverzeichnis FROM funktionskürzel INNER JOIN (funktion INNER JOIN (eintritt INNER JOIN (mannschaft INNER JOIN (SELECT mannschaft.`Paß-Nr`, concat(Vorname, ' ', Zuname) AS Name, dienstkürzel.Kürzel, dienstkürzel.Dienstgradbez, dienstgrad.Datum FROM (mannschaft INNER JOIN (dienstkürzel INNER JOIN dienstgrad ON (dienstkürzel.Kürzel = dienstgrad.Kürzel) AND (dienstkürzel.Kürzel = dienstgrad.Kürzel)) ON mannschaft.`Paß-Nr` = dienstgrad.`Paß-Nr`) INNER JOIN (SELECT dienstgrad.`Paß-Nr`, Max(dienstgrad.Datum) AS `Max von Datum` FROM mannschaft LEFT JOIN dienstgrad ON mannschaft.`Paß-Nr` = dienstgrad.`Paß-Nr` GROUP BY dienstgrad.`Paß-Nr`) akt_dienstgrad_ermitteln ON mannschaft.`Paß-Nr` = `akt_dienstgrad_ermitteln`.`Paß-Nr` GROUP BY mannschaft.`Paß-Nr`, Name, dienstkürzel.Kürzel, dienstkürzel.Dienstgradbez, dienstgrad.Datum, mannschaft.Status, `akt_dienstgrad_ermitteln`.`Max von Datum` HAVING (((dienstgrad.Datum) = `Max von Datum`))) aktueller_Dienstgrad ON mannschaft.`Paß-Nr` = aktueller_Dienstgrad.`Paß-Nr`) ON eintritt.`Paß-Nr` = mannschaft.`Paß-Nr`) ON funktion.`Paß-Nr` = mannschaft.`Paß-Nr`) ON funktionskürzel.Kürzel = funktion.Kürzel GROUP BY aktueller_Dienstgrad.Kürzel, mannschaft.Zuname, mannschaft.Vorname, mannschaft.status, eintritt.Datum, funktionskürzel.Bezeichnung, funktion.Datum_anfang, DateDiff(funktion.Datum_anfang, NOW()), mannschaft.Bilderverzeichnis, eintritt.Art, funktion.Kürzel HAVING (((eintritt.Art) = 'ersteintritt FW') AND ((Count(funktion.Datum_ende))=0)) ORDER BY mannschaft.Status";
 
+var aktueller_Dienstgrad = "SELECT mannschaft.`Paß-Nr`, concat(Vorname, ' ', Zuname) AS Name, dienstkürzel.Kürzel, dienstkürzel.Dienstgradbez, dienstgrad.Datum FROM (mannschaft INNER JOIN (dienstkürzel INNER JOIN dienstgrad ON (dienstkürzel.Kürzel = dienstgrad.Kürzel) AND (dienstkürzel.Kürzel = dienstgrad.Kürzel)) ON mannschaft.`Paß-Nr` = dienstgrad.`Paß-Nr`) INNER JOIN (SELECT dienstgrad.`Paß-Nr`, Max(dienstgrad.Datum) AS `Max von Datum` FROM mannschaft LEFT JOIN dienstgrad ON mannschaft.`Paß-Nr` = dienstgrad.`Paß-Nr` GROUP BY dienstgrad.`Paß-Nr`) akt_dienstgrad_ermitteln ON mannschaft.`Paß-Nr` = `akt_dienstgrad_ermitteln`.`Paß-Nr` GROUP BY mannschaft.`Paß-Nr`, Name, dienstkürzel.Kürzel, dienstkürzel.Dienstgradbez, dienstgrad.Datum, mannschaft.Status, `akt_dienstgrad_ermitteln`.`Max von Datum` HAVING (((dienstgrad.Datum) = `Max von Datum`))";
 
-
-// SELECT ANWESENHEIT.Datum, ANWESENHEIT.Brandeinsatz, ANWESENHEIT.[Techn Einsatz], ANWESENHEIT.[Techn Hilfeleistung], ANWESENHEIT.Aktuell, ANWESENHEIT.Beginn, ANWESENHEIT.Dauer, ANWESENHEIT.Ausrueckungsgrund, ANWESENHEIT.Einsatzort, ANWESENHEIT.[1 = TLFA 2000], ANWESENHEIT.[2 = LF], ANWESENHEIT.[3 = MTF], Sum([Anwesend]+[Bereitschaft])*(-1) AS Anzahl
-// FROM ANWESENHEIT INNER JOIN [NAME FÜR ANWESENHEIT] ON ANWESENHEIT.Lfd_Nr = [NAME FÜR ANWESENHEIT].[Einsatz-Nr]
-// GROUP BY ANWESENHEIT.Datum, ANWESENHEIT.Brandeinsatz, ANWESENHEIT.[Techn Einsatz], ANWESENHEIT.[Techn Hilfeleistung], ANWESENHEIT.Aktuell, ANWESENHEIT.Beginn, ANWESENHEIT.Dauer, ANWESENHEIT.Ausrueckungsgrund, ANWESENHEIT.Einsatzort, ANWESENHEIT.[1 = TLFA 2000], ANWESENHEIT.[2 = LF], ANWESENHEIT.[3 = MTF], ANWESENHEIT.Online, ANWESENHEIT.Lfd_Nr
-// HAVING (((ANWESENHEIT.Brandeinsatz)=True) AND ((ANWESENHEIT.Online)=True)) OR (((ANWESENHEIT.[Techn Einsatz])=True) AND ((ANWESENHEIT.Online)=True)) OR (((ANWESENHEIT.[Techn Hilfeleistung])=True) AND ((ANWESENHEIT.Online)=True)) OR (((ANWESENHEIT.Aktuell)=True) AND ((ANWESENHEIT.Online)=True));
-
-
+var akt_dienstgrad_ermitteln = "SELECT dienstgrad.`Paß-Nr`, Max(dienstgrad.Datum) AS `Max von Datum` FROM mannschaft LEFT JOIN dienstgrad ON mannschaft.`Paß-Nr` = dienstgrad.`Paß-Nr` GROUP BY dienstgrad.`Paß-Nr`";
 
 
 const handle_database =  query => (req, res) => {
@@ -67,8 +62,9 @@ getApiCall(get + "einsaetze", einsätze);
 getApiCall(get + "mannschaft", mannschaft);
 getApiCall(get + "termine", termine);
 getApiCall(get + "news", news);
+getApiCall(get + "test", aktueller_Dienstgrad);
 
-
+getApiCall(get + "akt_dienstgrad_ermitteln", akt_dienstgrad_ermitteln);
 
 
 app.listen(8080);
