@@ -1,6 +1,5 @@
 
 export const ROOT_URL = 'http://localhost:3000';
->>>>>>> e6749c9a8e152eee2bb8898b507933aa14e41c89
 
 export const getAll = '/api/get/all';
 export const getEinsatz = '/api/get/einsaetze';

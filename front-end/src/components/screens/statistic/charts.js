@@ -31,9 +31,6 @@ Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
   }
 });
 
-<<<<<<< HEAD
-
-
 class Charts extends Component {
 
   renderHelper = (data, numbers) => {
@@ -57,37 +54,12 @@ class Charts extends Component {
         </div>
 
       }
-=======
-class Charts extends Component {
-
-  renderHelper = (data, numbers) => {
-    console.log(data);
-    var num = _.uniq(numbers);
-    var array = []
-    for ( var key in data) {
-      array.push(data[key]);
-    }
-    console.log(data);
-    return (
-      array.map((data, i) => (
-
-        <div className="column col-s-12 col-ms-6 col-lg-4 col-ml-4 team-card shadow index">
-          <h2 className="align-center">Einsätze 2018</h2>
-          <Doughnut width={200} height={100} data={data.einsätze}/>
-        </div>
-
-        )
->>>>>>> e6749c9a8e152eee2bb8898b507933aa14e41c89
       )
     );
   }
 
   render() {
     const { data, length } = this.props;
-<<<<<<< HEAD
-    console.log(data);
-=======
->>>>>>> e6749c9a8e152eee2bb8898b507933aa14e41c89
     return (
       <div className="container-big">
         <div className="row shadow-land">
