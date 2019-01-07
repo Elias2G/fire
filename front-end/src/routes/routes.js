@@ -12,7 +12,6 @@ const Notruf = lazy(() => import('../components/screens/notruf'));
 const Kontakt = lazy(() => import('../components/screens/kontakt'));
 const Einsatzgebiet = lazy(() => import('../components/screens/einsatzgebiet'));
 
-
 export const Main = () => (
   <main>
     <Suspense fallback={<div>...loading</div>}>
