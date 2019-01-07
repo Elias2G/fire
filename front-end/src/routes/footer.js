@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import ReactWeather from 'react-open-weather';
+import 'react-open-weather/lib/css/ReactWeather.css';
 
 export class Footer extends Component{
   render(){
@@ -25,8 +27,12 @@ export class Footer extends Component{
               <p><span className="links"><NavLink to="/termine">Termine</NavLink></span></p>
           </div>
           <div className="column col-lg-4">
-            <p className="footerHeading">Wettervorhersage</p>
-            <div className="wetter"></div>
+            <ReactWeather
+              forecast="5days"
+              apikey="c6e25e91dbf84663b9793456190701"
+              type="city"
+              city="Kappel am Krappfeld"
+              lang="de"/>
           </div>
         </div>
         <div className="row">
