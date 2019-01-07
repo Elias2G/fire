@@ -17,13 +17,15 @@ class Home extends Component {
   }
 
   render() {
+    var reversedData = this.props.data.einsätze;
+
     return (
       <div>
         <img className="head_image coantainer-big" />
 
         <div className="container-big">
         <h1 className="container-big">Letzte Einsätze</h1>
-        <Einsätze />
+        <Einsätze data={reversedData.reverse()}/>
 
         <h1 className="container-big">Neuigkeiten</h1>
         <News />

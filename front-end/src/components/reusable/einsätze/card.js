@@ -19,10 +19,9 @@ export const Card = (props) => (
         image
       </div>
       <div className="column col-s-12">
-        <p>Datum: {props.data.date}</p>
-        <p>Uhrzeit: 16:05</p>
-        <p>Art: Brandeinsatz</p>
-        <p>Ort: Klagenfurt</p>
+        <p>Datum: {props.date}</p>
+        <p>Uhrzeit: {props.clock}</p>
+        <p>Ort: {props.ort}</p>
       </div>
     </div>
 

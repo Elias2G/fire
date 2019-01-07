@@ -22,33 +22,35 @@ class Einsätze extends Component {
     // this.props.fetch('fetch_einsaetze', `${ROOT_URL}${getEinsatz}`)
   }
 
+  renderHelper = (data) => {
+    return(
+      data.map((data, i) => {
+        if(i < 3) {
+          return (
+            <div className="column col-s-12 col-md-6 col-lg-4">
+              <Card
+                title={data.Ausrueckungsgrund}
+                subtitle={data.Einsatzort}
+                date={data.Datum}
+                clock={data.Beginn}
+                ort={data.Einsatzort}
+              />
+            </div>
+          )
+        } else {
+          return
+        }
+
+      })
+    )
+  }
 
   render() {
 
     return (
       <div className="einsatz-container">
         <div className="row">
-          <div className="column col-s-12 col-md-6 col-lg-4">
-            <Card
-              title="Title"
-              subtitle="subtitle"
-              data={this.state.data}
-            />
-          </div>
-          <div className="column col-s-12 col-md-6 col-lg-4">
-            <Card
-              title="Title"
-              subtitle="subtitle"
-              data={this.state.data}
-            />
-          </div>
-          <div className="column col-s-12 col-md-6 col-lg-4">
-            <Card
-              title="Title"
-              subtitle="subtitle"
-              data={this.state.data}
-            />
-          </div>
+          {this.renderHelper(this.props.data)}
         </div>
       </div>
     );
