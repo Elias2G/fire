@@ -10,11 +10,10 @@ export default class DropwDown extends Component {
     this.setState({
       open: !this.state.open,
     })
-    if(this.state.open === true) {
+    if(this.state.open === false) {
       this.props.function()
     }
   }
-
 
   renderHelper = (goTo, data) => {
     for(var i = 1; i <= this.props.data.length; i++) {
@@ -25,6 +24,7 @@ export default class DropwDown extends Component {
               className=""
               exact to={this.props.goTo[i]}
               activeClassName="activeLink"
+              onClick={() => this.props.function()}
             >
               <p className="dropItem"> - {this.props.data[i]}</p>
             </NavLink>
