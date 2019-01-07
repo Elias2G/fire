@@ -17,20 +17,51 @@ export default class DropwDown extends Component {
 
   renderHelper = (goTo, data) => {
     for(var i = 1; i <= this.props.data.length; i++) {
-      return (
-        <div className={"dropDownContainer " + this.state.open}>
-          <div className={"dropContent"}>
-            <NavLink
-              className=""
-              exact to={this.props.goTo[i]}
-              activeClassName="activeLink"
-              onClick={() => this.props.function()}
-            >
-              <p className="dropItem"> - {this.props.data[i]}</p>
-            </NavLink>
+      if(this.props.data.length > 2) {
+        return (
+          <>
+          <div className={"dropDownContainer " + this.state.open}>
+            <div className={"dropContent"}>
+              <NavLink
+                className=""
+                exact to={this.props.goTo[1]}
+                activeClassName="activeLink"
+                onClick={() => this.props.function()}
+              >
+                <p className="dropItem"> - {this.props.data[1]}</p>
+              </NavLink>
+            </div>
           </div>
-        </div>
-      )
+          <div className={"dropDownContainer " + this.state.open}>
+            <div className={"dropContent"}>
+              <NavLink
+                className=""
+                exact to={this.props.goTo[2]}
+                activeClassName="activeLink"
+                onClick={() => this.props.function()}
+              >
+                <p className="dropItem"> - {this.props.data[2]}</p>
+              </NavLink>
+            </div>
+          </div>
+        </>
+        )
+      } else {
+        return (
+          <div className={"dropDownContainer " + this.state.open}>
+            <div className={"dropContent"}>
+              <NavLink
+                className=""
+                exact to={this.props.goTo[i]}
+                activeClassName="activeLink"
+                onClick={() => this.props.function()}
+              >
+                <p className="dropItem"> - {this.props.data[i]}</p>
+              </NavLink>
+            </div>
+          </div>
+        )
+      }
     }
   }
 
