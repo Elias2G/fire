@@ -59,9 +59,18 @@ p {
 
 .under-nav {
   top: 70px;
+  border-top: 1px solid #ebebeb !important;
   height: 70px;
   width: 100%;
   position: fixed;
   background-color: white;
-  z-index: 999999;
+  z-index: 9999999;
+  @include respond-to($medium-large) {
+    top: 70px;
+    z-index: 999999999;
+  }
+  @include respond-to($medium) {
+    top: 70px;
+    z-index: 999999999;
+  }
 }

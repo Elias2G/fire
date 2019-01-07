@@ -91,7 +91,7 @@ export class Navigation extends Component {
       return(
         <>
         <div className="desktop row">
-          <div className="column col-md-2"><h2>LOGO</h2></div>
+          <div className="column col-md-2"><h3>LOGO</h3></div>
           <div className="column col-md-10 justify-center">
             <div className="row">
               <div className="column col-md-2 test"></div>
