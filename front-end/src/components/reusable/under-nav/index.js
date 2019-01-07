@@ -62,7 +62,7 @@ export default class UnderNav extends Component {
 
     return (
       <div className="under-nav-container">
-        <div className="container-big">
+        <div className="">
           <Slider {...settings}>
             {this.renderHelper(years)}
           </Slider>
