@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 
 import { fetch, determine } from '../../../redux/actions';
 
-import { ROOT_URL, getMannschaft } from '../../../config';
+import { ROOT_URL, getFunktionen, getDienstgrad } from '../../../config';
 
 import MannschaftContainer from './cardLoop';
 
 
 class Mannschaft extends Component {
   componentDidMount() {
-    this.props.fetch('fetch_mannschaft', `${ROOT_URL}${getMannschaft}`);
+    this.props.fetch('fetch_mannschaft_d', `${ROOT_URL}${getDienstgrad}`);
+    this.props.fetch('fetch_mannschaft_f', `${ROOT_URL}${getFunktionen}`);
   }
 
   render() {

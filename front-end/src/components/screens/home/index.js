@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+import { fetch } from '../../../redux/actions';
+import { ROOT_URL, getTermine, getEinsatz, getNews } from '../../../config';
+
 import Einsätze from '../../reusable/einsätze';
 import News from '../../reusable/news';
 import Termine from '../../reusable/termine';
 
-export default class Home extends Component {
+class Home extends Component {
+
+  componentDidMount() {
+    this.props.fetch('fetch_einsaetze', `${ROOT_URL}${getEinsatz}`);
+    this.props.fetch('fetch_einsaetze', `${ROOT_URL}${getTermine}`);
+    this.props.fetch('fetch_einsaetze', `${ROOT_URL}${getNews}`);
+  }
+
   render() {
     return (
       <div>
@@ -25,3 +36,14 @@ export default class Home extends Component {
     );
   }
 }
+
+const mapStateToProps = (data) => {
+  return {
+    data
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { fetch }
+)(Home)
