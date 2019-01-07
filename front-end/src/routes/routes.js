@@ -27,6 +27,5 @@ export const Main = () => (
         <Route exact path={'/einsatzgebiet'} component={props => <Einsatzgebiet {...props} />} />
       </Switch>
     </Suspense>
-
   </main>
 );
