@@ -34,22 +34,26 @@ Chart.helpers.extend(Chart.controllers.doughnut.prototype, {
 class Charts extends Component {
 
   renderHelper = (data, numbers) => {
-    console.log(data);
-    var num = _.uniq(numbers);
-    var array = []
-    for ( var key in data) {
-      array.push(data[key]);
-    }
-    console.log(data);
+    console.log(Object.keys(data));
     return (
-      array.map((data, i) => (
+      Object.keys(data).reverse().map((year, i) => {
+        const data2 = {
+        	labels: ['Brand Einätze', 'Technische Einsätze'],
+        	datasets: [{
+        		data: [data[year].Brandeinsatz, data[year].Techn_Einsatz],
+        		backgroundColor: [
+        		'red',
+        		'black',
+        		],
+        	}]
+        };
 
-        <div className="column col-s-12 col-ms-6 col-lg-4 col-ml-4 team-card shadow index">
-          <h2 className="align-center">Einsätze 2018</h2>
-          <Doughnut width={200} height={100} data={data.einsätze}/>
+        return <div className="column col-s-12 col-ms-6 col-lg-4 col-ml-4 team-card shadow index">
+          <h2 className="align-center">Einsätze {year}</h2>
+          <Doughnut width={200} height={100} data={data2} />
         </div>
 
-        )
+      }
       )
     );
   }
