@@ -1,5 +1,5 @@
 
-export const ROOT_URL = 'http://localhost:3000';
+export const ROOT_URL = 'http://d0ba21f8.ngrok.io';
 
 export const getAll = '/api/get/all';
 export const getEinsatz = '/api/get/einsaetze';

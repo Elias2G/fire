@@ -10,8 +10,9 @@ const Statistic = lazy(() => import('../components/screens/statistic'));
 const Termine = lazy(() => import('../components/screens/termine'));
 const Notruf = lazy(() => import('../components/screens/notruf'));
 const Kontakt = lazy(() => import('../components/screens/kontakt'));
-const Einsatzgebiet = lazy(() => import('../components/screens/einsatzgebiet'));
+const Einsatzgebiet = lazy(() => import('../components/screens/einsatzgebiet'))
 const Fahrzeuge = lazy(() => import('../components/screens/fahrzeuge'));
+const Geschichte = lazy(() => import('../components/screens/geschichte'));
 
 
 export const Main = () => (
@@ -27,8 +28,8 @@ export const Main = () => (
         <Route exact path={url[6]} component={props => <Kontakt {...props} />} />
         <Route exact path={'/einsatzgebiet'} component={props => <Einsatzgebiet {...props} />} />
         <Route exact path={'/fahrzeuge'} component={props => <Fahrzeuge {...props} />} />
+        <Route exact path={'/geschichte'} component={props => <Geschichte {...props} />} />
       </Switch>
     </Suspense>
-
   </main>
 );

@@ -39,6 +39,7 @@
 @import "../components/screens/einsätze/style";
 @import "../components/screens/statistic/stats";
 @import "../components/screens/kontakt/index";
+@import "../components/screens/geschichte/index";
 
 
 @import "~slick-carousel/slick/slick.css";
@@ -75,4 +76,9 @@ p {
     top: 70px;
     z-index: 9999;
   }
+}
+
+.rw-main{
+  background: linear-gradient(to top right, red, yellow) !important;
+  display:block !important;
 }
