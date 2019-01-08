@@ -105,9 +105,13 @@
 
 
 .desktop {
-  border-bottom: 1px solid $color-primary;
+  border-bottom: 1px solid #ebebeb;
+  padding-right: 300px;
   .test {
-    padding: 0px !important;
+    padding: 0px 20px 0px 20px !important;
+    a p {
+      font-size: 1.3em;
+    }
   }
 }
 
@@ -126,16 +130,17 @@
     transition: 200ms;
   }
   .d-hidden {
+    width: 200px;
     display: block;
     z-index: 9999999999999999;
     background: white;
-    padding: 20px;
-    width: 100%;
+    padding: 20px 20px 0px 20px;
     visibility: hidden;
     position: absolute;
     opacity: 0;
     transition: 200ms;
     a p {
+      padding-bottom: 20px;
       &:hover {
         color: grey;
         transition: 200ms;

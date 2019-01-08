@@ -45,7 +45,7 @@ class EinsatzContainer extends Component {
     const arrayMonth = [];
     var sammlung = {};
     return (
-      array.reverse().map((data) => {
+      array.reverse().map((data, i) => {
         var objMonth = data.Datum.substring(5,7);
 
         if( month[pos] === objMonth ) {

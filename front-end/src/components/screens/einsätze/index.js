@@ -9,11 +9,12 @@ import EinsatzContainer from './einsatz-container';
 
 class Einsätze extends Component {
   componentDidMount() {
-    this.props.fetch('fetch_einsaetze', `${ROOT_URL}${getEinsatz}`);
+    if(this.props.data.loaded.loaded.Einsätze !== true) {
+      this.props.fetch('fetch_einsaetze', `${getEinsatz}`);
+    }
   }
 
   render() {
-    console.log(this.props.data.einsätze)
     return (
       <div>
         <img className="head_image coantainer-big" />

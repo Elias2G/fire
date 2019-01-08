@@ -43,7 +43,7 @@ export class Navigation extends Component {
       return(
         <>
         <div className="mobile row">
-          <div className="column col-s-10"><h2>LOGO</h2></div>
+          <div className="column col-s-10"><h2>FF-Kappel</h2></div>
           <div
             className="column col-s-2 flex-algin-center justify-center nop"
             onClick={this.handleClick}
@@ -90,34 +90,33 @@ export class Navigation extends Component {
     } else {
       return(
         <>
-        <div className="desktop row">
-          <div className="column col-md-2"><h3>LOGO</h3></div>
+        <div className="desktop shadow row">
+          <div className="column col-md-2"><h3>FF-Kappel</h3></div>
           <div className="column col-md-10 justify-center">
-            <div className="row">
-              <div className="column col-md-2 test"></div>
-              <div className="column col-md-2 test">
+            <div className="row justify-end">
+              <div className="column test">
                 <NavLink exact to='/' onClick={this.handleClick} activeClassName="activeLink">
                   <p>Home</p>
                 </NavLink>
               </div>
-              <div className="column col-md-2 test">
+              <div className="column test">
                 <div className="desktopDown">
                   <NavLink exact to='/mannschaft' onClick={this.handleClick} activeClassName="activeLink">
                     <p>Mannschaft</p>
                   </NavLink>
-                  <div className="d-hidden shadow">
+                  <div className="d-hidden shadow-big">
                     <NavLink exact to='/fahrzeuge' onClick={this.handleClick} activeClassName="activeLink">
                       <p>Fahrzeuge</p>
                     </NavLink>
                   </div>
                 </div>
               </div>
-              <div className="column col-md-2 test">
+              <div className="column test">
                 <div className="desktopDown">
                   <NavLink exact to='/einsätze' onClick={this.handleClick} activeClassName="activeLink">
                     <p>Einsätze</p>
                   </NavLink>
-                  <div className="d-hidden shadow">
+                  <div className="d-hidden shadow-big">
                     <NavLink exact to='/statistic' onClick={this.handleClick} activeClassName="activeLink">
                       <p>Statistik</p>
                     </NavLink>
@@ -127,17 +126,17 @@ export class Navigation extends Component {
                   </div>
                 </div>
               </div>
-              <div className="column col-md-2 test">
+              <div className="column test">
                 <NavLink exact to='/termine' onClick={this.handleClick} activeClassName="activeLink">
                   <p>Termine</p>
                 </NavLink>
               </div>
-              <div className="column col-md-2 test">
+              <div className="column test">
                 <div className="desktopDown">
                   <NavLink exact to='/kontakt' onClick={this.handleClick} activeClassName="activeLink">
                     <p>Kontakt</p>
                   </NavLink>
-                  <div className="d-hidden shadow">
+                  <div className="d-hidden shadow-big">
                     <NavLink exact to='/notruf' onClick={this.handleClick} activeClassName="activeLink">
                       <p>Notruf</p>
                     </NavLink>

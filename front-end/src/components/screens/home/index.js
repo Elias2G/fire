@@ -11,9 +11,8 @@ import Termine from '../../reusable/termine';
 class Home extends Component {
 
   componentDidMount() {
-    this.props.fetch('fetch_einsaetze', `${ROOT_URL}${getEinsatz}`);
-    this.props.fetch('fetch_einsaetze', `${ROOT_URL}${getTermine}`);
-    this.props.fetch('fetch_einsaetze', `${ROOT_URL}${getNews}`);
+    this.props.fetch('fetch_termine', `${ROOT_URL}${getTermine}`);
+    this.props.fetch('fetch_news', `${ROOT_URL}${getNews}`);
   }
 
   render() {
@@ -25,7 +24,7 @@ class Home extends Component {
 
         <div className="container-big">
         <h1 className="container-big">Letzte Einsätze</h1>
-        <Einsätze data={reversedData.reverse()}/>
+        <Einsätze />
 
         <h1 className="container-big">Neuigkeiten</h1>
         <News />

@@ -36,19 +36,15 @@ export default function(state = initState, action) {
       var technN = 0;
 
       var obj = {};
-      console.log(obj);
 
       action.data.map((data) => {
         var brand = data.Brandeinsatz.data[0];
         var techn = data.Techn_Einsatz.data[0] || data.Techn_Hilfeleistung.data[0];
 
-        console.log(data.Datum.substring(0,4) == year[pos]);
         if(data.Datum.substring(0,4) == year[pos]) {
-          console.log(year[pos]);
           if(brand === 1) { brandN++ }
           if(techn === 1) { technN++ }
         } else {
-          console.log('hi');
           obj = { ...obj, [year[pos].toString()]: { 'Brandeinsatz': brandN, 'Techn_Einsatz': technN, 'Gesamt': brandN + technN } }
           brandN = 0;
           technN = 0;
