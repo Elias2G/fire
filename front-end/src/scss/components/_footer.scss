@@ -22,12 +22,14 @@
 
 .links{
   color:white;
+  font-size: 15pt;
   &:hover{
   color: $color-secondary;
   }
   a{
     color: white;
-  }
+    font-size: 1em;
+    }
   a:hover{
     color: $color-secondary;
   }

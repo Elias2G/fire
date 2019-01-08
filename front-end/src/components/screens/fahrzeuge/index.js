@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
 
+//Head image
+import headImage from '../.././images/headImage/head-image.png'
+
+//Aktive Fahrzeuge
+import Fahrzeug1 from '../.././images/Fahrzeuge/AktiveFahrzeuge/SLF-A.jpg'
+import Fahrzeug2 from '../.././images/Fahrzeuge/AktiveFahrzeuge/TLFA2000.jpg'
+
+//Ausgeschiedene Fahrzeuge
+import Fahrzeug3 from '../.././images/Fahrzeuge/AusgeschiedeneFahrzeuge/TLFA2000.jpg'
+import Fahrzeug4 from '../.././images/Fahrzeuge/AusgeschiedeneFahrzeuge/Unimog.jpg'
+import Fahrzeug5 from '../.././images/Fahrzeuge/AusgeschiedeneFahrzeuge/FordFK.jpg'
+import Fahrzeug6 from '../.././images/Fahrzeuge/AusgeschiedeneFahrzeuge/Kutsche.jpg'
+
 export default class Geschichte extends Component {
   render() {
     return (
       <div>
-        <img className="head_image" />
+        <img className="head_image" src={headImage}/>
           <div className="container-big">
             <h1 className="align-center heading">Fahrzeuge</h1>
             <div className="row">
               <h3>Aktive Fahrzeuge</h3>
               <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3 terminBild">
-                  <img className="car-img" src="https://img.picload.org/image/dclwarpg/slf-a.jpg" />
+                <div className="col-lg-3 col-md-3">
+                  <img className="car-img" src={Fahrzeug1} />
                 </div>
                 <div className="col-lg-9 col-md-9 container">
                   <h5 className="break-all align-center">Mercedes 925 AF/32Atego</h5>
@@ -25,8 +38,8 @@ export default class Geschichte extends Component {
                 </div>
               </div>
               <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3 terminBild">
-                  <img className="car-img" src="https://img.picload.org/image/dclwarpo/tlfa2000bj2005.jpg" />
+                <div className="col-lg-3 col-md-3">
+                  <img className="car-img" src={Fahrzeug2} />
                 </div>
                 <div className="col-lg-9 col-md-9 container ">
                   <h5 className="break-all align-center">Mercedes 1329 / Atego</h5>
@@ -41,8 +54,8 @@ export default class Geschichte extends Component {
               </div>
               <h3>Ausgeschiedene Fahrzeuge</h3>
               <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3 terminBild">
-                  <img className="car-img" src="https://img.picload.org/image/dclwarpl/tlfa2000.jpg" />
+                <div className="col-lg-3 col-md-3">
+                  <img className="car-img" src={Fahrzeug3}/>
                 </div>
                 <div className="col-lg-9 col-md-9 container ">
                   <h5 className="break-all align-center">Steyr 690</h5>
@@ -57,8 +70,8 @@ export default class Geschichte extends Component {
                 </div>
               </div>
               <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3 terminBild">
-                  <img className="car-img" src="https://img.picload.org/image/dclwarpc/unimog.jpg" />
+                <div className="col-lg-3 col-md-3">
+                  <img className="car-img" src={Fahrzeug4}/>
                 </div>
                 <div className="col-lg-9 col-md-9 container ">
                   <h5 className="break-all align-center">Mercedes Unimog U125</h5>
@@ -73,8 +86,8 @@ export default class Geschichte extends Component {
                 </div>
               </div>
               <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3 carBild">
-                  <img className="car-img" src="https://img.picload.org/image/dclwarwa/fordfk1250.jpg"/>
+                <div className="col-lg-3 col-md-3">
+                  <img className="car-img" src={Fahrzeug5}/>
                 </div>
                 <div className="col-lg-9 col-md-9 container ">
                   <h5 className="break-all align-center">Ford FK 1250</h5>
@@ -89,8 +102,8 @@ export default class Geschichte extends Component {
                 </div>
               </div>
               <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3 terminBild">
-                  <img className="car-img" src="https://img.picload.org/image/dclwarwo/kutsche.jpg" />
+                <div className="col-lg-3 col-md-3">
+                  <img className="car-img" src={Fahrzeug6}/>
                 </div>
                 <div className="col-lg-9 col-md-9 container ">
                   <h5 className="break-all align-center">Pferdebespannte Kutsche</h5>

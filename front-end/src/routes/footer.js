@@ -14,7 +14,7 @@ export class Footer extends Component{
             <p>OBI Thomas KÖFER</p>
             <p>Sandstrasse 1</p>
             <p>9321 Kappel am Krappfeld</p>
-            <p>Handy: 0664 3219337</p>
+            <p>Handy: 0664/32 19 337</p>
             <p>E-Mail: <a href="mailto:thomas.koefer@aon.at"><span className="links">Thomas.koefer@aon.at</span></a></p>
           </div>
           <div className="column col-lg-4 col-md-6">
@@ -29,9 +29,8 @@ export class Footer extends Component{
           <div className="column col-lg-4">
             <ReactWeather
               forecast="5days"
-              apikey="c6e25e91dbf84663b9793456190701"
-              type="city"
-              city="Kappel am Krappfeld"
+              apikey="c64e2921b4e74ed983592157190801"
+              type="auto"
               lang="de"/>
           </div>
         </div>

@@ -28,7 +28,7 @@ export default class Notruf extends Component {
                 <p className="align-left">
                   Sandstrasse 1<br />
                   9321 Kappel am Krappfeld<br />
-                  Handy: 0664 3219337<br />
+                  Handy: 0664/32 19 337<br />
                   E-Mail: Thomas.koefer@aon.at
                 </p>
               </div>
@@ -38,7 +38,7 @@ export default class Notruf extends Component {
                 <p className="align-left">
                   Edling<br />
                   9321 Kappel am Krappfeld<br />
-                  Handy: 0664/2552412<br />
+                  Handy: 0664/25 52 412<br />
                   E-Mail: mogy.g@drei.at
                 </p>
               </div>

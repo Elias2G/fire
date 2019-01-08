@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 
+//Head image
+import headImage from '../.././images/headImage/head-image3.png'
+
 export default class Notruf extends Component {
   render() {
     return (
       <div>
-        <img className="head_image" src={require('../../images/headImage/head-image.png')} />
+        <img className="head_image" src={headImage} />
           <div className="container-big">
             <h1 className="align-center heading">Notruf!</h1>
 
