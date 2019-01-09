@@ -1,14 +1,11 @@
 // main: ../../../scss/index.scss
-.car-img{
-  vertical-align: middle;
-  width: auto;
+
+.car-image-container {
+  width: 100%;
   height: auto;
+  overflow: hidden;
 }
-.carBild{
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-}
-h3{
-  color:$color-secondary;
+
+.fz-b-b {
+  border-bottom: 1px solid #ebebeb;
 }

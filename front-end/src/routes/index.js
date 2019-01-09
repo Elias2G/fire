@@ -91,12 +91,17 @@ export class Navigation extends Component {
       return(
         <>
         <div className="desktop shadow row">
-          <div className="column col-md-2"><h3>FF-Kappel</h3></div>
+          <div className="column col-md-2"><h4 className="nb">FF-Kappel</h4></div>
           <div className="column col-md-10 justify-center">
             <div className="row justify-end">
               <div className="column test">
                 <NavLink exact to='/' onClick={this.handleClick} activeClassName="activeLink">
                   <p>Home</p>
+                </NavLink>
+              </div>
+              <div className="column test">
+                <NavLink exact to='/news' onClick={this.handleClick} activeClassName="activeLink">
+                  <p>News</p>
                 </NavLink>
               </div>
               <div className="column test">

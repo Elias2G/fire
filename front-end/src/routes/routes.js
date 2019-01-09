@@ -13,6 +13,7 @@ const Kontakt = lazy(() => import('../components/screens/kontakt'));
 const Einsatzgebiet = lazy(() => import('../components/screens/einsatzgebiet'))
 const Fahrzeuge = lazy(() => import('../components/screens/fahrzeuge'));
 const Geschichte = lazy(() => import('../components/screens/geschichte'));
+const News = lazy(() => import('../components/screens/news'));
 
 
 export const Main = () => (
@@ -29,6 +30,7 @@ export const Main = () => (
         <Route exact path={'/einsatzgebiet'} component={props => <Einsatzgebiet {...props} />} />
         <Route exact path={'/fahrzeuge'} component={props => <Fahrzeuge {...props} />} />
         <Route exact path={'/geschichte'} component={props => <Geschichte {...props} />} />
+        <Route exact path={'/neuigkeiten'} component={props => <News {...props} />} />
       </Switch>
     </Suspense>
   </main>

@@ -12,10 +12,15 @@
       }
     }
   }
+  &:hover {
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.23);
+    transition: 200ms;
+  }
 }
 
 .termine{
   padding:10px;
+  color: black;
 
 span{
   font-size: 25pt;

@@ -5,7 +5,7 @@ import { determine } from '../actions';
 const initState = [
     {
         Titel: "Übung",
-        Datum: 2008,
+        Datum: '2008-12-12',
     }
   ]
 

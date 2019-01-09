@@ -10,11 +10,6 @@ import Termine from '../../reusable/termine';
 
 class Home extends Component {
 
-  componentDidMount() {
-    this.props.fetch('fetch_termine', `${ROOT_URL}${getTermine}`);
-    this.props.fetch('fetch_news', `${ROOT_URL}${getNews}`);
-  }
-
   render() {
     var reversedData = this.props.data.einsätze;
 

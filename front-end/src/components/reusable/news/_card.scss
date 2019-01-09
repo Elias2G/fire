@@ -23,9 +23,10 @@
   height: 200px;
 }
 
-h5 {
+h6 {
   &.card-image-title {
-    color: white;
+    color: $color-primary-light;
+    font-size: 0.9em;
   }
 }
 h3 {

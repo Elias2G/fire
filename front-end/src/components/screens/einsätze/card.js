@@ -4,19 +4,24 @@ import Slider from 'react-slick';
 
 import { NavLink } from 'react-router-dom';
 
+import ImageIcon from '../../images/icons/image-icon.jpg';
+
 export default class Card extends Component {
   state = {
     open: 'e-closed',
+    opener: 'opener'
   }
 
   handleClick = () => {
     this.setState({
       open: this.state.open === 'e-open' ? 'e-closed' : 'e-open',
+      opener: this.state.opener === 'opener' ? 'closer' : 'opener'
     })
   }
 
   render() {
     const { data } = this.props;
+    console.log(data);
     return (
       <div className="col-s-12 einsatz-card-full shadow nop">
 
@@ -41,9 +46,9 @@ export default class Card extends Component {
                 {data.Einsatzort}
               </h6>
             </div>
-            <div className="column col-s-6 col-lg-3 nop">
+            <div className={"column col-s-6 col-lg-3 nop justify-right " + this.state.opener}>
               <div>
-                icon
+                {data.Bilderverzeichnis !== null ? <img className="image-icon" src={ImageIcon} /> : '' }
               </div>
             </div>
           </div>
@@ -56,26 +61,33 @@ export default class Card extends Component {
               <p>lorem ipsum dolor sit amet</p>
             </div>
             <div className="column col-s-12 col-lg-6 nop">
-              <h6>Einsatzdaten</h6>
-              <p>
-                Datum: {
-                  data.Datum.substring(8,10) + '.' +
-                  data.Datum.substring(5,7) + '.' +
-                  data.Datum.substring(0,4)
-                }
-              </p>
-              <p>
-                Beginn:
-                {
-                  data.Beginn === null ? 'x' : data.Beginn.substring(11,16)
-                }
-              </p>
-              <p>Dauer: {data.Dauer} h</p>
-              <p>Ort: {data.Einsatzort}</p>
-              <h6>Eigene Einsatzkräfte</h6>
-              <p>Mannschaft: { data.Anzahl }</p>
-              <p>Fahrzeuge: </p>
-              { data.TLFA2000.data[0] === 1 ? <NavLink to="/fahrzeuge"><p>TLFA2000</p></NavLink> : ''}
+              <div className="row">
+                <div className="column col-md-6 nopt nopl nopr">
+                  <h6>Einsatzdaten</h6>
+                  <p>
+                    Datum: {
+                      data.Datum.substring(8,10) + '.' +
+                      data.Datum.substring(5,7) + '.' +
+                      data.Datum.substring(0,4)
+                    }
+                  </p>
+                  <p>
+                    Beginn:
+                    {
+                      data.Beginn === null ? 'x' : data.Beginn.substring(11,16)
+                    }
+                  </p>
+                  <p>Dauer: {data.Dauer} h</p>
+                  <p>Ort: {data.Einsatzort}</p>
+                </div>
+                <div className="column col-md-6 nopt nopl nopr">
+                  <h6>Eigene Einsatzkräfte</h6>
+                  <p>Mannschaft: { data.Anzahl }</p>
+                  <p>Fahrzeuge: </p>
+                  { data.TLFA2000.data[0] === 1 ? <NavLink to="/fahrzeuge"><p>TLFA2000</p></NavLink> : ''}
+                </div>
+
+              </div>
             </div>
           </div>
 
@@ -128,23 +140,20 @@ export const EinsatzSlider = (props) => {
   }
   var imageArray = props.data.split(';');
   console.log(imageArray);
+
+  var renderSlider = (data) => {
+    return data.map(data => {
+      return (
+        <div>
+          <img className="placeholder_img" source={data} />
+        </div>
+      )
+    })
+  }
+
   return (
     <Slider {...settings} >
-      <div>
-        <img className="placeholder_img" source={imageArray[0]} />
-      </div>
-      <div>
-        <img className="placeholder_img" />
-      </div>
-      <div>
-        <img className="placeholder_img" />
-      </div>
-      <div>
-        <img className="placeholder_img" />
-      </div>
-      <div>
-        <img className="placeholder_img" />
-      </div>
+      {renderSlider(imageArray)}
     </Slider>
   )
 }

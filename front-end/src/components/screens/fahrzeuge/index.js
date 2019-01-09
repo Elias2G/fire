@@ -14,110 +14,142 @@ import Fahrzeug5 from '../.././images/Fahrzeuge/AusgeschiedeneFahrzeuge/FordFK.j
 import Fahrzeug6 from '../.././images/Fahrzeuge/AusgeschiedeneFahrzeuge/Kutsche.jpg'
 
 export default class Geschichte extends Component {
+  state = {
+    active: [
+      {
+        name: 'Mercedes 925 AF/32Atego',
+        bez: 'SLF-A',
+        ps: 'Leistung: 250 PS ',
+        weight: 'Gesamtgewicht: 10,5t ',
+        room: 'Sitzplätze: 9 ',
+        year: 'Baujahr: 2005',
+        img: Fahrzeug1
+      },
+      {
+        name: 'Mercedes 1329 / Atego',
+        bez: 'TLFA 2000',
+        ps: 'Leistung: 290 PS ',
+        weight: 'Gesamtgewicht: 13t ',
+        room: 'Sitzplätze: 9 ',
+        year: 'Baujahr: 2014',
+        img: Fahrzeug2
+      },
+    ],
+    away: [
+      {
+        name: 'Steyr 690',
+        bez: 'TLF-A 2000',
+        ps: 'Leistung: 170 PS ',
+        weight: 'Gesamtgewicht: 11,2t',
+        room: 'Sitzplätze: 9 ',
+        year: 'Baujahr: 1986',
+        awayTime: 'Ausgeschieden: 2014 ',
+        img: Fahrzeug3,
+      },
+      {
+        name: 'Mercedes Unimog U125',
+        bez: 'LF-A',
+        ps: 'Leistung: 125 PS ',
+        weight: 'Gesamtgewicht: 6,8t ',
+        room: 'Sitzplätze: 8 ',
+        year: 'Baujahr: 1977',
+        awayTime: 'Ausgeschieden: 2005',
+        img: Fahrzeug4,
+      },
+      {
+        name: 'Ford FK 1250',
+        bez: 'MTF',
+        ps: 'Leistung: 55 PS ',
+        weight: 'Gesamtgewicht: 2t ',
+        room: 'Sitzplätze: 8 ',
+        year: 'Baujahr: 1960',
+        awayTime: 'Ausgeschieden: 2005',
+        img: Fahrzeug5
+      },
+      {
+        name: 'Pferdebespannte Kutsche',
+        bez: 'PfK',
+        ps: 'Leistung: 1 PS ',
+        weight: 'Gesamtgewicht: ? ',
+        room: 'Sitzplätze: 3 ',
+        year: 'Baujahr: ?',
+        awayTime: 'Ausgeschieden',
+        img: Fahrzeug6
+      },
+    ]
+  }
+
+  renderHelperActive = () => {
+    return this.state.active.map(data => {
+      return (
+        <div className="column col-md-4 col-lg-3">
+          <div className="team-card nop shadow">
+            <div className="car-image-container">
+              <img src={data.img} />
+            </div>
+
+            <div className="container fz-b-b">
+              <p className="bold">{data.name}</p>
+              <p className="bold primary">{data.bez}</p>
+            </div>
+
+            <div className="container">
+              <p>{data.ps}</p>
+              <p>{data.weight}</p>
+              <p>{data.room}</p>
+              <p>{data.year}</p>
+            </div>
+
+          </div>
+        </div>
+      )
+    })
+  }
+  renderHelperAway = () => {
+    return this.state.away.map(data => {
+      return (
+        <div className="column col-md-4 col-lg-3">
+          <div className="team-card nop shadow">
+            <div className="car-image-container">
+              <img src={data.img} />
+            </div>
+
+            <div className="container fz-b-b">
+              <p className="bold">{data.name}</p>
+              <p className="bold primary">{data.bez}</p>
+            </div>
+
+            <div className="container">
+              <p>{data.ps}</p>
+              <p>{data.weight}</p>
+              <p>{data.room}</p>
+              <p>{data.year}</p>
+              <p>{data.awayTime}</p>
+            </div>
+
+          </div>
+        </div>
+      )
+    })
+  }
+
   render() {
     return (
       <div>
         <img className="head_image" src={headImage}/>
           <div className="container-big">
             <h1 className="align-center heading">Fahrzeuge</h1>
+
+            <h3 className="align-left heading">Aktive Fahrzeuge</h3>
             <div className="row">
-              <h3>Aktive Fahrzeuge</h3>
-              <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3">
-                  <img className="car-img" src={Fahrzeug1} />
-                </div>
-                <div className="col-lg-9 col-md-9 container">
-                  <h5 className="break-all align-center">Mercedes 925 AF/32Atego</h5>
-                  <h6 className="align-center primary-light">
-                    SLF-A<br />
-                    Leistung: 250 PS <br />
-                    Gesamtgewicht: 10,5t <br />
-                    Sitzplätze: 9 <br />
-                    Baujahr: 2005<br />
-                  </h6>
-                </div>
-              </div>
-              <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3">
-                  <img className="car-img" src={Fahrzeug2} />
-                </div>
-                <div className="col-lg-9 col-md-9 container ">
-                  <h5 className="break-all align-center">Mercedes 1329 / Atego</h5>
-                  <h6 className="align-center primary-light">
-                    TLFA 2000<br />
-                    Leistung: 290 PS <br />
-                    Gesamtgewicht: 13t <br />
-                    Sitzplätze: 9 <br />
-                    Baujahr: 2014<br />
-                  </h6>
-                </div>
-              </div>
-              <h3>Ausgeschiedene Fahrzeuge</h3>
-              <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3">
-                  <img className="car-img" src={Fahrzeug3}/>
-                </div>
-                <div className="col-lg-9 col-md-9 container ">
-                  <h5 className="break-all align-center">Steyr 690</h5>
-                  <h6 className="align-center primary-light">
-                    TLF-A 2000<br />
-                    Leistung: 170 PS <br />
-                    Gesamtgewicht: 11,2t <br />
-                    Sitzplätze: 9 <br />
-                    Baujahr: 1986<br />
-                    Ausgeschieden: 2014 <br />
-                  </h6>
-                </div>
-              </div>
-              <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3">
-                  <img className="car-img" src={Fahrzeug4}/>
-                </div>
-                <div className="col-lg-9 col-md-9 container ">
-                  <h5 className="break-all align-center">Mercedes Unimog U125</h5>
-                  <h6 className="align-center primary-light">
-                    LF-A<br />
-                    Leistung: 125 PS <br />
-                    Gesamtgewicht: 6,8t <br />
-                    Sitzplätze: 8 <br />
-                    Baujahr: 1977<br />
-                    Ausgeschieden: 2005 <br />
-                  </h6>
-                </div>
-              </div>
-              <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3">
-                  <img className="car-img" src={Fahrzeug5}/>
-                </div>
-                <div className="col-lg-9 col-md-9 container ">
-                  <h5 className="break-all align-center">Ford FK 1250</h5>
-                  <h6 className="align-center primary-light">
-                    MTF<br />
-                    Leistung: 55 PS <br />
-                    Gesamtgewicht: 2t <br />
-                    Sitzplätze: 8 <br />
-                    Baujahr: 1960<br />
-                    Ausgeschieden: 2005 <br />
-                  </h6>
-                </div>
-              </div>
-              <div className="row team-card shadow index nop">
-                <div className="col-lg-3 col-md-3">
-                  <img className="car-img" src={Fahrzeug6}/>
-                </div>
-                <div className="col-lg-9 col-md-9 container ">
-                  <h5 className="break-all align-center">Pferdebespannte Kutsche</h5>
-                  <h6 className="align-center primary-light">
-                    PfK<br />
-                    Leistung: 1 PS <br />
-                    Gesamtgewicht: ? <br />
-                    Sitzplätze: 3 <br />
-                    Baujahr: ?<br />
-                    Ausgeschieden<br />
-                  </h6>
-                </div>
-              </div>
+              {this.renderHelperActive()}
             </div>
+
+            <h3 className="align-left heading">Ausgeschiedene Fahrzeuge</h3>
+            <div className="row">
+              {this.renderHelperAway()}
+            </div>
+
         </div>
       </div>
     );
