@@ -100,8 +100,8 @@ export class Navigation extends Component {
                 </NavLink>
               </div>
               <div className="column test">
-                <NavLink exact to='/news' onClick={this.handleClick} activeClassName="activeLink">
-                  <p>News</p>
+                <NavLink exact to='/neuigkeiten' onClick={this.handleClick} activeClassName="activeLink">
+                  <p>Neuigkeiten</p>
                 </NavLink>
               </div>
               <div className="column test">
