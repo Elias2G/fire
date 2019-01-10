@@ -1,5 +1,7 @@
 var express = require('express');
+const path = require('path');
 var mysql = require('mysql');
+
 var app = express();
 
 var pool = mysql.createPool({
@@ -10,6 +12,8 @@ var pool = mysql.createPool({
   database: 'ff-kappel',
   debug: false
 });
+
+app.use(express.static(path.join(__dirname, 'front-end/build')));
 
 const get = "/api/get/";
 
@@ -62,4 +66,5 @@ getApiCall(get + "news", news);
 getApiCall(get + "dienstgrad", aktueller_Dienstgrad);
 getApiCall(get + "funktionen", akt_funktionen);
 
-app.listen(8080);
+const port = process.env.PORT || 8080;
+app.listen(port);
